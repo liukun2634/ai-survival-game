@@ -1,12 +1,16 @@
-import { useNavigate } from 'react-router';
+import { useNavigate, useSearchParams } from 'react-router';
+import { useRef, useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { StatBar } from '../../components/StatBar/StatBar';
+import { PosterGenerator } from '../../components/PosterGenerator/PosterGenerator';
+import type { PosterGeneratorHandle } from '../../components/PosterGenerator/PosterGenerator';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { useGameContext } from '../../hooks/GameContext';
 import { careers } from '../../data/careers';
 import { titles } from '../../data/titles';
 import { ui } from '../../i18n/translations';
-import type { HistoryEntry, AttributeKey } from '../../engine/types';
+import { encodeShareData, decodeShareData } from '../../utils/shareEncoder';
+import type { HistoryEntry, AttributeKey, GameResult } from '../../engine/types';
 import styles from './ResultPage.module.css';
 
 function computeImpact(entry: HistoryEntry): number {
@@ -16,8 +20,36 @@ function computeImpact(entry: HistoryEntry): number {
 
 export function ResultPage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { t, language } = useLanguage();
-  const { lastResult } = useGameContext();
+  const { lastResult, setLastResult } = useGameContext();
+  const posterRef = useRef<PosterGeneratorHandle>(null);
+  const [linkCopied, setLinkCopied] = useState(false);
+
+  // On mount: if no lastResult but there's a ?s= param, decode and restore it
+  useEffect(() => {
+    const encoded = searchParams.get('s');
+    if (!lastResult && encoded) {
+      const shareData = decodeShareData(encoded);
+      if (shareData) {
+        const restored: GameResult = {
+          careerId: shareData.careerId,
+          finalYear: shareData.finalYear,
+          score: shareData.score,
+          titleId: shareData.titleId,
+          finalAttributes: {
+            safety: shareData.safety,
+            skill: shareData.skill,
+            finance: shareData.finance,
+            network: shareData.network,
+          },
+          history: [],
+        };
+        setLastResult(restored);
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!lastResult) {
     return (
@@ -51,8 +83,20 @@ export function ResultPage() {
     }),
   };
 
+  const handleSavePoster = () => {
+    posterRef.current?.capturePoster();
+  };
+
+  const handleCopyLink = () => {
+    const shareUrl = `${window.location.origin}${window.location.pathname}#/result?s=${encodeShareData(lastResult)}`;
+    navigator.clipboard.writeText(shareUrl).catch(() => {});
+    setLinkCopied(true);
+    setTimeout(() => setLinkCopied(false), 2000);
+  };
+
   return (
     <div className={styles.page}>
+      <PosterGenerator ref={posterRef} result={lastResult} language={language} t={t} />
       <div className={styles.reportCard}>
         {/* Header */}
         <motion.div
@@ -176,18 +220,15 @@ export function ResultPage() {
           </button>
           <button
             className={`${styles.actionButton} ${styles.secondary}`}
-            onClick={() => alert(t({ zh: '海报功能即将开放', en: 'Poster feature coming soon' }))}
+            onClick={handleSavePoster}
           >
             🖼 {t(ui.savePoster)}
           </button>
           <button
             className={`${styles.actionButton} ${styles.secondary}`}
-            onClick={() => {
-              navigator.clipboard.writeText(window.location.href).catch(() => {});
-              alert(t(ui.linkCopied));
-            }}
+            onClick={handleCopyLink}
           >
-            🔗 {t(ui.copyLink)}
+            🔗 {linkCopied ? t(ui.linkCopied) : t(ui.copyLink)}
           </button>
         </motion.div>
       </div>
