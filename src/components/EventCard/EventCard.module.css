@@ -1,0 +1,118 @@
+.card {
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+  border-left: 4px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Event type border colors */
+.opportunity {
+  border-left-color: #3182ce;
+}
+
+.crisis {
+  border-left-color: var(--color-danger);
+}
+
+.life {
+  border-left-color: var(--color-text-light);
+}
+
+.ai_milestone {
+  border-left-color: var(--color-accent);
+}
+
+.typeLabel {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.opportunity .typeLabel {
+  color: #3182ce;
+  background-color: rgba(49, 130, 206, 0.1);
+}
+
+.crisis .typeLabel {
+  color: var(--color-danger);
+  background-color: rgba(197, 48, 48, 0.1);
+}
+
+.life .typeLabel {
+  color: var(--color-text-light);
+  background-color: rgba(113, 128, 150, 0.1);
+}
+
+.ai_milestone .typeLabel {
+  color: var(--color-accent);
+  background-color: rgba(214, 158, 46, 0.1);
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--space-sm);
+  line-height: 1.4;
+}
+
+.description {
+  font-size: 0.875rem;
+  color: var(--color-text);
+  line-height: 1.7;
+  margin-bottom: var(--space-lg);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.optionButton {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  font-family: var(--font-body);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.optionButton:not(.locked):hover {
+  background-color: var(--color-primary);
+  color: var(--color-text-inverse);
+  border-color: var(--color-primary);
+  transform: translateX(2px);
+}
+
+.optionButton:not(.locked):active {
+  transform: translateX(1px);
+}
+
+.locked {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background-color: var(--color-border-light);
+}
+
+.lockIcon {
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
