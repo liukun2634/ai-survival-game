@@ -1,0 +1,322 @@
+.page {
+  min-height: 100vh;
+  background: var(--color-bg);
+  padding: var(--space-lg) var(--space-md);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.reportCard {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  width: 100%;
+  max-width: 580px;
+  overflow: hidden;
+}
+
+/* No result state */
+.noResult {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+  color: var(--color-text-light);
+  font-size: 1rem;
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+/* Header */
+.reportHeader {
+  background: var(--color-primary);
+  padding: var(--space-xl) var(--space-lg) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.careerBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.careerIcon {
+  font-size: 1.5rem;
+}
+
+.careerName {
+  font-size: 0.9rem;
+  color: rgba(247, 250, 252, 0.7);
+  letter-spacing: 0.04em;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.titleEarned {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  color: var(--color-accent-light);
+  line-height: 1.2;
+}
+
+.outcomeTag {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.win {
+  background: rgba(56, 161, 105, 0.2);
+  color: #68d391;
+  border: 1px solid rgba(56, 161, 105, 0.4);
+}
+
+.lose {
+  background: rgba(197, 48, 48, 0.2);
+  color: #fc8181;
+  border: 1px solid rgba(197, 48, 48, 0.4);
+}
+
+.reportSubtitle {
+  font-size: 0.8rem;
+  color: rgba(247, 250, 252, 0.45);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Score section */
+.scoreSection {
+  padding: var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  background: linear-gradient(135deg, rgba(26, 54, 93, 0.04) 0%, transparent 100%);
+}
+
+.scoreBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.scoreLabel {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scoreNumber {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.divider {
+  width: 1px;
+  height: 48px;
+  background: var(--color-border);
+}
+
+.yearsBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.yearsLabel {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.yearsNumber {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.yearsUnit {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+}
+
+/* Stats section */
+.statsSection {
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sectionTitle {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.03em;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* Timeline section */
+.timelineSection {
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.timelineEntry {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+}
+
+.timelineYear {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--color-primary);
+  background: rgba(26, 54, 93, 0.08);
+  padding: 2px var(--space-xs);
+  border-radius: var(--radius-sm);
+  align-self: flex-start;
+  white-space: nowrap;
+}
+
+.timelineContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.timelineEvent {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.4;
+}
+
+.timelineChoice {
+  font-size: 0.78rem;
+  color: var(--color-text-light);
+  line-height: 1.4;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.timelineImpact {
+  flex-shrink: 0;
+}
+
+.impactBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+}
+
+/* Action buttons */
+.actions {
+  padding: var(--space-lg);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.actionButton {
+  flex: 1;
+  min-width: 120px;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 0.02em;
+  transition: filter var(--transition-fast), transform var(--transition-fast);
+}
+
+.actionButton:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.actionButton:active {
+  transform: translateY(0);
+}
+
+.primary {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+}
+
+.secondary {
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 0;
+    align-items: flex-start;
+  }
+
+  .reportCard {
+    border-radius: 0;
+    min-height: 100vh;
+  }
+
+  .titleRow {
+    flex-direction: column;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .actionButton {
+    width: 100%;
+  }
+}
