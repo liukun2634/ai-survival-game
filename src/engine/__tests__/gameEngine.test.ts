@@ -1,5 +1,5 @@
 import { createInitialState, advanceYear, applyChoice, getAvailableOptions, generateResult } from '../gameEngine';
-import { Career, GameEvent, AiMilestone, Title, GameState } from '../types';
+import type { Career, GameEvent, AiMilestone, Title, GameState } from '../types';
 
 const mockCareer: Career = {
   id: 'programmer',

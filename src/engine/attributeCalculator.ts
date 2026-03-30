@@ -1,4 +1,4 @@
-import { Attributes, EventOption, AiMilestone } from './types';
+import type { Attributes, EventOption, AiMilestone } from './types';
 
 export function clamp(value: number, min = 0, max = 100): number {
   return Math.max(min, Math.min(max, value));

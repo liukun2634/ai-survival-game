@@ -1,4 +1,4 @@
-import { GameState, GameResult, Career, GameEvent, AiMilestone, EventOption, HistoryEntry, Title } from './types';
+import type { GameState, GameResult, Career, GameEvent, AiMilestone, EventOption, HistoryEntry, Title } from './types';
 import { applyEffects, applyAiImpact, isOptionAvailable, calculateScore } from './attributeCalculator';
 import { filterEventsForYear, selectRandomEvents, getMilestoneForYear } from './eventResolver';
 import { createRng } from './random';

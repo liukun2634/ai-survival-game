@@ -1,4 +1,4 @@
-import { GameEvent, AiMilestone, Attributes, EventOption } from './types';
+import type { GameEvent, AiMilestone, Attributes, EventOption } from './types';
 import { applyEffects } from './attributeCalculator';
 
 export function filterEventsForYear(
