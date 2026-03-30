@@ -170,7 +170,13 @@ export function GamePage() {
   const yearLabel = t(ui.year).replace('{n}', String(state.currentYear));
 
   return (
-    <div className={styles.page}>
+    <motion.div
+      className={styles.page}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+    >
       {/* Header: Year + AI Progress */}
       <div className={styles.topBar}>
         <div className={styles.yearInfo}>
@@ -339,6 +345,6 @@ export function GamePage() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }

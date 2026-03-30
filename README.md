@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+# AI 生存挑战 | AI Survival Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+一款文字策略游戏：选择你的职业，在AI时代做出关键决策，看你能存活多久？
 
-Currently, two official plugins are available:
+A text-based strategy game: choose your career, make critical decisions in the AI era, and see how long you can survive.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🎮 How to Play | 怎么玩
 
-## React Compiler
+1. Choose a career from 10 options (programmer, designer, accountant, teacher, etc.)
+2. Each year, face random events and AI milestones
+3. Make decisions that affect your 4 attributes: Safety, Skill, Finance, Network
+4. Survive 30 years without your Safety dropping to zero — or get replaced by AI!
+5. Share your result poster or link with friends
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠 Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend:** React + TypeScript + Vite
+- **Styling:** CSS Modules
+- **Animation:** Motion (Framer Motion)
+- **Routing:** React Router (HashRouter)
+- **Testing:** Vitest + Testing Library
+- **Poster:** html2canvas
+- **Deploy:** GitHub Pages
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Local Development | 本地开发
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+# Clone the repository
+git clone <repo-url>
+cd ai-survival-game
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# Install dependencies
+npm install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Start development server
+npm run dev
+
+# Run tests
+npm run test
+
+# Run tests once
+npm run test:run
+
+# Type check
+npx tsc --noEmit
+
+# Production build
+npm run build
+
+# Preview production build
+npx serve dist
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 📁 Architecture | 架构
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── engine/          # Pure TypeScript game logic (no React dependency)
+│   ├── types.ts     # Core game types
+│   ├── random.ts    # Seeded RNG (mulberry32)
+│   ├── attributeCalculator.ts
+│   ├── eventResolver.ts
+│   └── gameEngine.ts
+├── data/            # Game content (careers, events, milestones, titles)
+├── i18n/            # Bilingual support (Chinese + English)
+├── components/      # Shared UI components
+├── pages/           # Route pages (Home, CareerSelect, Game, Result)
+├── hooks/           # Game state management
+└── utils/           # Share encoder
+```
+
+The game engine is a pure TypeScript module with no React dependency, designed for future reuse in WeChat mini-programs.
+
+## 📄 License
+
+MIT

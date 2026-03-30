@@ -9,7 +9,13 @@ export function HomePage() {
   const { t } = useLanguage();
 
   return (
-    <div className={styles.page}>
+    <motion.div
+      className={styles.page}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+    >
       <div className={styles.background}>
         <div className={styles.gridOverlay} />
         <div className={styles.cityline} />
@@ -90,6 +96,6 @@ export function HomePage() {
           })}
         </motion.p>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -53,12 +53,18 @@ export function ResultPage() {
 
   if (!lastResult) {
     return (
-      <div className={styles.noResult}>
+      <motion.div
+        className={styles.noResult}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.25 }}
+      >
         <p>{t({ zh: '没有游戏记录', en: 'No game record found' })}</p>
         <button className={styles.actionButton} onClick={() => navigate('/')}>
           {t(ui.startPlaying)}
         </button>
-      </div>
+      </motion.div>
     );
   }
 
@@ -95,7 +101,13 @@ export function ResultPage() {
   };
 
   return (
-    <div className={styles.page}>
+    <motion.div
+      className={styles.page}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+    >
       <PosterGenerator ref={posterRef} result={lastResult} language={language} t={t} />
       <div className={styles.reportCard}>
         {/* Header */}
@@ -232,6 +244,6 @@ export function ResultPage() {
           </button>
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }

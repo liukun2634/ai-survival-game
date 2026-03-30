@@ -22,7 +22,13 @@ export function CareerSelectPage() {
   };
 
   return (
-    <div className={styles.page}>
+    <motion.div
+      className={styles.page}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+    >
       <div className={styles.header}>
         <motion.button
           className={styles.backButton}
@@ -100,6 +106,6 @@ export function CareerSelectPage() {
       {!selected && (
         <div className={styles.confirmPlaceholder} />
       )}
-    </div>
+    </motion.div>
   );
 }

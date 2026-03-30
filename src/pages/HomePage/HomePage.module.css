@@ -185,3 +185,26 @@
     max-width: 300px;
   }
 }
+
+@media (min-width: 768px) {
+  .content {
+    padding: var(--space-2xl) var(--space-xl);
+    gap: var(--space-xl);
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    max-width: 520px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    max-width: 800px;
+    padding: var(--space-2xl) var(--space-2xl);
+  }
+
+  .title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+  }
+}
