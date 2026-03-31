@@ -1,11 +1,10 @@
 .page {
   min-height: 100vh;
-  background: var(--color-bg);
+  background: linear-gradient(135deg, #fefcf3, #fef5e7);
   padding-bottom: 100px;
 }
 
 .header {
-  background: var(--color-primary);
   padding: var(--space-lg) var(--space-lg) var(--space-xl);
   text-align: center;
   position: relative;
@@ -15,9 +14,9 @@
   position: absolute;
   left: var(--space-md);
   top: var(--space-md);
-  background: rgba(255, 255, 255, 0.1);
-  color: rgba(247, 250, 252, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(26, 54, 93, 0.08);
+  color: var(--color-text-light);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--space-xs) var(--space-md);
   font-size: 0.85rem;
@@ -26,19 +25,19 @@
 }
 
 .backButton:hover {
-  background: rgba(255, 255, 255, 0.18);
-  color: var(--color-text-inverse);
+  background: rgba(26, 54, 93, 0.12);
+  color: var(--color-text);
 }
 
 .heading {
   font-family: var(--font-heading);
   font-size: clamp(1.4rem, 4vw, 2rem);
-  color: var(--color-text-inverse);
+  color: var(--color-primary);
   margin: var(--space-md) 0 var(--space-sm);
 }
 
 .subheading {
-  color: rgba(247, 250, 252, 0.65);
+  color: var(--color-text-light);
   font-size: 0.9rem;
   max-width: 420px;
   margin: 0 auto;
@@ -73,7 +72,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: var(--color-primary);
+  background: #ffffff;
   border-top: 2px solid var(--color-accent);
   padding: var(--space-md) var(--space-lg);
   display: flex;
@@ -81,7 +80,7 @@
   justify-content: space-between;
   gap: var(--space-md);
   z-index: 100;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .selectedInfo {
@@ -97,7 +96,7 @@
 .selectedName {
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-text-inverse);
+  color: var(--color-text);
 }
 
 .confirmButton {

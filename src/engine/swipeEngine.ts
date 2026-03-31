@@ -1,4 +1,4 @@
-import type { Attributes, AttributeKey, GameState, SwipeCard, SwipeHistory, GameResult } from './types';
+import type { Attributes, AttributeKey, GameState, SwipeCard, SwipeHistory, GameResult, SwipeOutcome, CareerTalent } from './types';
 import { endings } from '../data/endings';
 
 const ATTR_KEYS: AttributeKey[] = ['safety', 'skill', 'finance', 'network'];
@@ -17,13 +17,59 @@ function applyEffects(attrs: Attributes, effects: Partial<Attributes>): Attribut
   return result;
 }
 
+export function pickOutcome(
+  outcomes: SwipeOutcome[],
+  careerId: string,
+  talents: CareerTalent[],
+  rng: () => number,
+): SwipeOutcome {
+  const weights = outcomes.map(outcome => {
+    let w = outcome.weight;
+    if (outcome.careerWeightModifiers?.[careerId] !== undefined) {
+      w *= outcome.careerWeightModifiers[careerId]!;
+    }
+    for (const talent of talents) {
+      if (talent.outcomeWeightModifiers[outcome.id] !== undefined) {
+        w *= talent.outcomeWeightModifiers[outcome.id];
+      }
+    }
+    return Math.max(w, 0);
+  });
+
+  const total = weights.reduce((sum, w) => sum + w, 0);
+  let roll = rng() * total;
+  for (let i = 0; i < outcomes.length; i++) {
+    roll -= weights[i];
+    if (roll <= 0) return outcomes[i];
+  }
+  return outcomes[outcomes.length - 1];
+}
+
+export interface SwipeResult {
+  newState: GameState;
+  outcome?: SwipeOutcome;
+}
+
 export function applySwipe(
   state: GameState,
   card: SwipeCard,
   direction: 'left' | 'right',
-): GameState {
+  talents?: CareerTalent[],
+  rng?: () => number,
+): SwipeResult {
   const choice = direction === 'left' ? card.leftChoice : card.rightChoice;
-  const newAttrs = applyEffects(state.attributes, choice.effects);
+
+  let effects: Partial<Attributes>;
+  let outcome: SwipeOutcome | undefined;
+
+  if (choice.outcomes && choice.outcomes.length > 0 && rng) {
+    outcome = pickOutcome(choice.outcomes, state.careerId, talents ?? [], rng);
+    effects = outcome.effects;
+  } else {
+    effects = choice.effects;
+  }
+
+  const newAttrs = applyEffects(state.attributes, effects);
 
   const entry: SwipeHistory = {
     cardIndex: state.currentCard,
@@ -31,13 +77,18 @@ export function applySwipe(
     direction,
     attributesBefore: { ...state.attributes },
     attributesAfter: { ...newAttrs },
+    outcomeId: outcome?.id,
+    outcomeText: outcome?.text,
   };
 
   return {
-    ...state,
-    attributes: newAttrs,
-    currentCard: state.currentCard + 1,
-    history: [...state.history, entry],
+    newState: {
+      ...state,
+      attributes: newAttrs,
+      currentCard: state.currentCard + 1,
+      history: [...state.history, entry],
+    },
+    outcome,
   };
 }
 

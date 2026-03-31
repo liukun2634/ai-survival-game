@@ -7,6 +7,21 @@ export interface Attributes {
 
 export type AttributeKey = keyof Attributes;
 
+export interface SwipeOutcome {
+  id: string;
+  text: { zh: string; en: string };
+  effects: Partial<Attributes>;
+  weight: number;
+  careerWeightModifiers?: Partial<Record<string, number>>;
+}
+
+export interface CareerTalent {
+  id: string;
+  name: { zh: string; en: string };
+  description: { zh: string; en: string };
+  outcomeWeightModifiers: Record<string, number>;
+}
+
 export type CharacterType = 'boss' | 'colleague' | 'senior' | 'ai' | 'headhunter' | 'hr';
 
 export interface Character {
@@ -22,10 +37,12 @@ export interface SwipeCard {
   leftChoice: {
     label: { zh: string; en: string };
     effects: Partial<Attributes>;
+    outcomes?: SwipeOutcome[];
   };
   rightChoice: {
     label: { zh: string; en: string };
     effects: Partial<Attributes>;
+    outcomes?: SwipeOutcome[];
   };
   stage: 1 | 2 | 3;
   careerIds?: string[];
@@ -37,6 +54,7 @@ export interface Career {
   description: { zh: string; en: string };
   startingAttributes: Attributes;
   icon: string;
+  talents?: CareerTalent[];
 }
 
 export interface SwipeHistory {
@@ -45,6 +63,8 @@ export interface SwipeHistory {
   direction: 'left' | 'right';
   attributesBefore: Attributes;
   attributesAfter: Attributes;
+  outcomeId?: string;
+  outcomeText?: { zh: string; en: string };
 }
 
 export interface GameState {

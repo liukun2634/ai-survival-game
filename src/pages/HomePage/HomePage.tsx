@@ -16,11 +16,6 @@ export function HomePage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.25 }}
     >
-      <div className={styles.background}>
-        <div className={styles.gridOverlay} />
-        <div className={styles.cityline} />
-      </div>
-
       <div className={styles.content}>
         <motion.div
           className={styles.badge}

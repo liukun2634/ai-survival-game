@@ -78,10 +78,20 @@ export function SwipeCard({ card, onSwipe }: SwipeCardProps) {
         {t(card.text)}
       </div>
 
-      {/* Bottom hint labels */}
-      <div className={styles.bottomHints}>
-        <span className={styles.bottomLeft}>← {t(card.leftChoice.label)}</span>
-        <span className={styles.bottomRight}>{t(card.rightChoice.label)} →</span>
+      {/* Choice buttons */}
+      <div className={styles.choiceButtons}>
+        <button
+          className={`${styles.choiceBtn} ${styles.choiceBtnLeft}`}
+          onClick={(e) => { e.stopPropagation(); onSwipe('left'); }}
+        >
+          ← {t(card.leftChoice.label)}
+        </button>
+        <button
+          className={`${styles.choiceBtn} ${styles.choiceBtnRight}`}
+          onClick={(e) => { e.stopPropagation(); onSwipe('right'); }}
+        >
+          {t(card.rightChoice.label)} →
+        </button>
       </div>
     </motion.div>
   );

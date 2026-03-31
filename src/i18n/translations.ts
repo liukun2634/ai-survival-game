@@ -27,4 +27,9 @@ export const ui = {
   featureYears: { zh: '30 年挑战', en: '30 Year Challenge' },
   featureSwipe: { zh: '左滑右滑', en: 'Swipe to Decide' },
   footerTagline: { zh: '一局只要 3 分钟，看看你的 AI 时代命运', en: 'Just 3 minutes per round — discover your AI era fate' },
+  tapToContinue: { zh: '点击继续', en: 'Tap to continue' },
+  careerJourney: { zh: '职业生涯回顾', en: 'Career Journey' },
+  keyMoments: { zh: '关键时刻', en: 'Key Moments' },
+  yearLabel: { zh: '第{n}年', en: 'Year {n}' },
+  shareResult: { zh: '截图分享', en: 'Share Screenshot' },
 } as const;

@@ -1,19 +1,22 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
 import { SwipeCard } from '../../components/SwipeCard/SwipeCard';
 import { AttributePanel } from '../../components/AttributePanel/AttributePanel';
+import { OutcomeToast } from '../../components/OutcomeToast/OutcomeToast';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { useGameContext } from '../../hooks/GameContext';
 import { useSwipeGame } from '../../hooks/useSwipeGame';
 import { ui } from '../../i18n/translations';
+import type { GameResult } from '../../engine/types';
 import styles from './GamePage.module.css';
 
 export function GamePage() {
   const navigate = useNavigate();
   const { t } = useLanguage();
   const { selectedCareer, setLastResult } = useGameContext();
-  const { state, currentCard, startGame, swipe } = useSwipeGame();
+  const { state, currentCard, startGame, swipe, pendingOutcome, clearOutcome } = useSwipeGame();
+  const pendingResultRef = useRef<GameResult | null>(null);
 
   useEffect(() => {
     if (!selectedCareer) {
@@ -24,10 +27,19 @@ export function GamePage() {
   }, [selectedCareer, startGame, navigate]);
 
   const handleSwipe = (direction: 'left' | 'right') => {
+    if (pendingOutcome) return;
     const result = swipe(direction);
     if (result) {
-      setLastResult(result);
-      setTimeout(() => navigate('/result'), 600);
+      pendingResultRef.current = result;
+    }
+  };
+
+  const handleOutcomeDismiss = () => {
+    clearOutcome();
+    if (pendingResultRef.current) {
+      setLastResult(pendingResultRef.current);
+      pendingResultRef.current = null;
+      setTimeout(() => navigate('/result'), 300);
     }
   };
 
@@ -54,7 +66,7 @@ export function GamePage() {
       {/* Card area */}
       <div className={styles.cardArea}>
         <AnimatePresence mode="wait">
-          {currentCard && (
+          {currentCard && !pendingOutcome && (
             <SwipeCard
               key={currentCard.id + '-' + state.currentCard}
               card={currentCard}
@@ -63,7 +75,7 @@ export function GamePage() {
           )}
         </AnimatePresence>
 
-        {state.isGameOver && (
+        {state.isGameOver && !pendingOutcome && (
           <motion.div
             className={styles.gameOverOverlay}
             initial={{ opacity: 0 }}
@@ -78,12 +90,19 @@ export function GamePage() {
       </div>
 
       {/* Swipe hints */}
-      {!state.isGameOver && (
+      {!state.isGameOver && !pendingOutcome && (
         <div className={styles.swipeHints}>
           <span className={styles.hintLeft}>{t(ui.swipeLeftHint)}</span>
           <span className={styles.hintRight}>{t(ui.swipeRightHint)}</span>
         </div>
       )}
+
+      {/* Outcome toast overlay */}
+      <AnimatePresence>
+        {pendingOutcome && (
+          <OutcomeToast outcome={pendingOutcome} onDismiss={handleOutcomeDismiss} />
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }

@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { useNavigate } from 'react-router';
 import { motion } from 'motion/react';
 import { useLanguage } from '../../i18n/LanguageContext';
@@ -11,6 +12,7 @@ export function ResultPage() {
   const navigate = useNavigate();
   const { t } = useLanguage();
   const { lastResult } = useGameContext();
+  const cardRef = useRef<HTMLDivElement>(null);
 
   if (!lastResult) {
     return (
@@ -40,6 +42,48 @@ export function ResultPage() {
     { label: t(ui.network), icon: '🤝', value: attrs.network, color: '#805ad5' },
   ];
 
+  // Pick key story moments from history (ones with outcomeText)
+  const storyMoments = lastResult.history
+    .filter(h => h.outcomeText)
+    .map((h, _i) => ({
+      year: h.cardIndex + 1,
+      text: t(h.outcomeText!),
+    }));
+
+  // Select up to 5 most spread-out moments
+  const keyMoments = selectKeyMoments(storyMoments, 5);
+
+  const handleShare = async () => {
+    const node = cardRef.current;
+    if (!node) return;
+    try {
+      const { default: html2canvas } = await import('html2canvas');
+      const canvas = await html2canvas(node, {
+        backgroundColor: '#fefcf3',
+        scale: 2,
+        useCORS: true,
+      });
+      canvas.toBlob((blob) => {
+        if (!blob) return;
+        if (navigator.share && navigator.canShare?.({ files: [new File([blob], 'result.png', { type: 'image/png' })] })) {
+          navigator.share({
+            files: [new File([blob], 'ai-career-result.png', { type: 'image/png' })],
+            title: t(ui.appTitle),
+          });
+        } else {
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'ai-career-result.png';
+          a.click();
+          URL.revokeObjectURL(url);
+        }
+      }, 'image/png');
+    } catch {
+      // html2canvas not available — fallback: do nothing
+    }
+  };
+
   return (
     <motion.div
       className={styles.page}
@@ -48,7 +92,13 @@ export function ResultPage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.25 }}
     >
-      <div className={styles.card}>
+      <div className={styles.card} ref={cardRef}>
+        {/* Title banner */}
+        <div className={styles.banner}>
+          <span className={styles.bannerIcon}>{career?.icon ?? '👤'}</span>
+          <span className={styles.bannerTitle}>{t(ui.appTitle)}</span>
+        </div>
+
         {/* Persona */}
         <motion.div
           className={styles.personaSection}
@@ -61,16 +111,16 @@ export function ResultPage() {
           <p className={styles.personaDesc}>{t(ending.description)}</p>
         </motion.div>
 
-        {/* Stats */}
+        {/* Summary stats */}
         <motion.div
           className={styles.statsSection}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
+          transition={{ delay: 0.2 }}
         >
           <div className={styles.summaryRow}>
             <div className={styles.summaryItem}>
-              <span className={styles.summaryLabel}>{career?.icon} {career ? t(career.name) : ''}</span>
+              <span className={styles.summaryLabel}>{career ? t(career.name) : ''}</span>
             </div>
             <div className={styles.summaryItem}>
               <span className={styles.summaryValue}>{lastResult.finalYear}</span>
@@ -91,7 +141,7 @@ export function ResultPage() {
                   <div
                     className={styles.attrFill}
                     style={{
-                      width: `${bar.value}%`,
+                      width: `${Math.min(Math.max(bar.value, 0), 100)}%`,
                       backgroundColor: (bar.value <= 0 || bar.value >= 100) ? 'var(--color-danger)' : bar.color,
                     }}
                   />
@@ -105,18 +155,60 @@ export function ResultPage() {
           </div>
         </motion.div>
 
-        {/* Actions */}
-        <motion.div
-          className={styles.actions}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-        >
-          <button className={styles.primaryBtn} onClick={() => navigate('/')}>
-            🔄 {t(ui.playAgain)}
-          </button>
-        </motion.div>
+        {/* Career journey — story highlights */}
+        {keyMoments.length > 0 && (
+          <motion.div
+            className={styles.journeySection}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35 }}
+          >
+            <h2 className={styles.journeyTitle}>{t(ui.careerJourney)}</h2>
+            <div className={styles.timeline}>
+              {keyMoments.map((m, i) => (
+                <div key={i} className={styles.timelineItem}>
+                  <div className={styles.timelineDot} />
+                  <div className={styles.timelineContent}>
+                    <span className={styles.timelineYear}>
+                      {t(ui.yearLabel).replace('{n}', String(m.year))}
+                    </span>
+                    <p className={styles.timelineText}>{m.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+        {/* Watermark for screenshot */}
+        <div className={styles.watermark}>{t(ui.appTitle)} — {t(ui.appSubtitle)}</div>
       </div>
+
+      {/* Actions — outside the screenshot card */}
+      <motion.div
+        className={styles.actions}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+      >
+        <button className={styles.shareBtn} onClick={handleShare}>
+          📸 {t(ui.shareResult)}
+        </button>
+        <button className={styles.primaryBtn} onClick={() => navigate('/')}>
+          🔄 {t(ui.playAgain)}
+        </button>
+      </motion.div>
     </motion.div>
   );
+}
+
+/** Pick N evenly-spaced moments from the list */
+function selectKeyMoments(moments: { year: number; text: string }[], max: number) {
+  if (moments.length <= max) return moments;
+  const step = moments.length / max;
+  const result: typeof moments = [];
+  for (let i = 0; i < max; i++) {
+    result.push(moments[Math.floor(i * step)]);
+  }
+  return result;
 }

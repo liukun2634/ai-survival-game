@@ -1,0 +1,64 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.toast {
+  background: #fff;
+  border-radius: var(--radius-xl);
+  padding: 28px 24px 20px;
+  max-width: 340px;
+  width: calc(100% - 48px);
+  box-shadow: var(--shadow-xl);
+  text-align: center;
+  cursor: default;
+}
+
+.toastText {
+  font-size: 1.05rem;
+  color: var(--color-text);
+  line-height: 1.7;
+  margin: 0 0 16px;
+}
+
+.toastEffects {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.effectTag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.effectUp {
+  color: #276749;
+  background: rgba(56, 161, 105, 0.1);
+}
+
+.effectDown {
+  color: #9b2c2c;
+  background: rgba(197, 48, 48, 0.08);
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  margin: 0;
+  opacity: 0.5;
+}
