@@ -35,7 +35,7 @@ export function HomePage() {
           className={styles.title}
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
+          transition={{ duration: 0.7, delay: 0.2 }}
         >
           <span className={styles.titleZh}>{ui.appTitle.zh}</span>
           <span className={styles.titleSeparator}>/</span>
@@ -46,7 +46,7 @@ export function HomePage() {
           className={styles.subtitle}
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
+          transition={{ duration: 0.6, delay: 0.4 }}
         >
           {t(ui.appSubtitle)}
         </motion.p>
@@ -55,19 +55,19 @@ export function HomePage() {
           className={styles.features}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.55, ease: 'easeOut' }}
+          transition={{ duration: 0.6, delay: 0.55 }}
         >
           <div className={styles.featureItem}>
             <span className={styles.featureIcon}>🏢</span>
-            <span>10 {t({ zh: '职业选择', en: 'Career Paths' })}</span>
+            <span>{t(ui.featureCareers)}</span>
           </div>
           <div className={styles.featureItem}>
             <span className={styles.featureIcon}>📅</span>
-            <span>30 {t({ zh: '年时间跨度', en: 'Year Journey' })}</span>
+            <span>{t(ui.featureYears)}</span>
           </div>
           <div className={styles.featureItem}>
-            <span className={styles.featureIcon}>🤖</span>
-            <span>7 {t({ zh: 'AI 里程碑', en: 'AI Milestones' })}</span>
+            <span className={styles.featureIcon}>👆</span>
+            <span>{t(ui.featureSwipe)}</span>
           </div>
         </motion.div>
 
@@ -76,11 +76,11 @@ export function HomePage() {
           onClick={() => navigate('/select')}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.7, ease: 'easeOut' }}
-          whileHover={{ scale: 1.04, transition: { duration: 0.15 } }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+          whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
         >
-          <span className={styles.startButtonText}>{t(ui.startChallenge)}</span>
+          <span className={styles.startButtonText}>{t(ui.startGame)}</span>
           <span className={styles.startButtonArrow}>→</span>
         </motion.button>
 
@@ -90,10 +90,7 @@ export function HomePage() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.9 }}
         >
-          {t({
-            zh: '做出你的选择，应对每一次AI冲击，看看你能坚持多久。',
-            en: 'Make your choices, weather every AI disruption, see how long you can last.',
-          })}
+          {t(ui.footerTagline)}
         </motion.p>
       </div>
     </motion.div>

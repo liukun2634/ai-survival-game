@@ -1,0 +1,74 @@
+import type { EndingTag, GameState } from '../engine/types';
+
+export const endings: EndingTag[] = [
+  {
+    id: 'ai_surfer',
+    name: { zh: '🏆 AI 时代弄潮儿', en: '🏆 AI Era Surfer' },
+    description: { zh: '你完美驾驭了 AI 时代！', en: 'You perfectly navigated the AI era!' },
+    condition: (s: GameState) => s.gameOverReason === 'won' && s.attributes.safety > 50 && s.attributes.skill > 50 && s.attributes.finance > 50 && s.attributes.network > 50,
+    priority: 100,
+  },
+  {
+    id: 'zen_survivor',
+    name: { zh: '🧘 佛系生存大师', en: '🧘 Zen Survivor' },
+    description: { zh: '稳如老狗，低调存活', en: 'Steady as a rock, quietly survived' },
+    condition: (s: GameState) => s.gameOverReason === 'won' && s.attributes.safety >= s.attributes.skill && s.attributes.safety >= s.attributes.finance && s.attributes.safety >= s.attributes.network,
+    priority: 90,
+  },
+  {
+    id: 'tech_geek',
+    name: { zh: '📈 技术极客', en: '📈 Tech Geek' },
+    description: { zh: '靠硬实力杀出血路', en: 'Carved a path with raw skill' },
+    condition: (s: GameState) => s.gameOverReason === 'won' && s.attributes.skill >= s.attributes.safety && s.attributes.skill >= s.attributes.finance && s.attributes.skill >= s.attributes.network,
+    priority: 85,
+  },
+  {
+    id: 'network_king',
+    name: { zh: '🤝 人脉之王', en: '🤝 Network King' },
+    description: { zh: '不是你会什么，是你认识谁', en: "It's not what you know, it's who you know" },
+    condition: (s: GameState) => s.gameOverReason === 'won' && s.attributes.network >= s.attributes.safety && s.attributes.network >= s.attributes.skill && s.attributes.network >= s.attributes.finance,
+    priority: 80,
+  },
+  {
+    id: 'financially_free',
+    name: { zh: '💰 财务自由', en: '💰 Financially Free' },
+    description: { zh: '钱到位了，AI 随便替代', en: 'Rich enough to not care about AI' },
+    condition: (s: GameState) => s.gameOverReason === 'won' && s.attributes.finance >= s.attributes.safety && s.attributes.finance >= s.attributes.skill && s.attributes.finance >= s.attributes.network,
+    priority: 75,
+  },
+  {
+    id: 'optimized_away',
+    name: { zh: '📦 被优化的打工人', en: '📦 Optimized Away' },
+    description: { zh: '你的岗位已被 AI 全面替代，HR 通知你明天不用来了。', en: "Your position has been fully replaced by AI. HR says don't come in tomorrow." },
+    condition: (s: GameState) => s.gameOverReason === 'attr_zero' && s.gameOverAttr === 'safety',
+    priority: 70,
+  },
+  {
+    id: 'burned_out',
+    name: { zh: '🔥 卷到燃尽', en: '🔥 Burned Out' },
+    description: { zh: '你赢了所有人，但输给了自己。', en: 'You beat everyone else, but lost yourself.' },
+    condition: (s: GameState) => s.gameOverReason === 'attr_max' && s.gameOverAttr === 'skill',
+    priority: 70,
+  },
+  {
+    id: 'startup_casualty',
+    name: { zh: '💸 创业炮灰', en: '💸 Startup Casualty' },
+    description: { zh: '过度投资 AI 项目，账户余额归零。', en: 'Over-invested in AI projects, bank account emptied.' },
+    condition: (s: GameState) => s.gameOverReason === 'attr_zero' && s.gameOverAttr === 'finance',
+    priority: 70,
+  },
+  {
+    id: 'social_burnout',
+    name: { zh: '🫠 社交透支', en: '🫠 Social Burnout' },
+    description: { zh: '认识了所有人，却迷失了自己。', en: 'Met everyone, but lost yourself.' },
+    condition: (s: GameState) => s.gameOverReason === 'attr_max' && s.gameOverAttr === 'network',
+    priority: 70,
+  },
+  {
+    id: 'quitter',
+    name: { zh: '🏝️ 躺平先知', en: '🏝️ Quitting Prophet' },
+    description: { zh: '这个时代不适合你。', en: 'This era is not for you.' },
+    condition: () => true,
+    priority: 0,
+  },
+];

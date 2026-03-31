@@ -11,7 +11,7 @@ import styles from './CareerSelectPage.module.css';
 
 export function CareerSelectPage() {
   const navigate = useNavigate();
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const { setSelectedCareer } = useGameContext();
   const [selected, setSelected] = useState<Career | null>(null);
 
@@ -68,13 +68,12 @@ export function CareerSelectPage() {
             key={career.id}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.1 + index * 0.05, ease: 'easeOut' }}
+            transition={{ duration: 0.4, delay: 0.1 + index * 0.05 }}
           >
             <CareerCard
               career={career}
-              isSelected={selected?.id === career.id}
-              onSelect={() => setSelected(career)}
-              language={language}
+              selected={selected?.id === career.id}
+              onClick={() => setSelected(career)}
             />
           </motion.div>
         ))}
@@ -91,7 +90,7 @@ export function CareerSelectPage() {
           >
             <div className={styles.selectedInfo}>
               <span className={styles.selectedIcon}>{selected.icon}</span>
-              <span className={styles.selectedName}>{selected.name[language]}</span>
+              <span className={styles.selectedName}>{t(selected.name)}</span>
             </div>
             <button
               className={styles.confirmButton}

@@ -1,0 +1,105 @@
+.card {
+  position: relative;
+  background: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: 24px 20px;
+  text-align: center;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+  max-width: 340px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1;
+}
+
+.characterName {
+  font-size: 0.75rem;
+  color: #805ad5;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.text {
+  font-size: 1.1rem;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  padding: 0 8px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hint {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+}
+
+.hintLeft {
+  left: -80px;
+}
+
+.hintRight {
+  right: -80px;
+}
+
+.hintLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
+.hintEffects {
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+}
+
+.bottomHints {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--color-text-light);
+  opacity: 0.5;
+}
+
+.bottomLeft {
+  color: var(--color-danger);
+}
+
+.bottomRight {
+  color: var(--color-success);
+}
+
+@media (max-width: 480px) {
+  .hintLeft {
+    left: -60px;
+  }
+  .hintRight {
+    right: -60px;
+  }
+  .hintLabel {
+    font-size: 0.75rem;
+  }
+}

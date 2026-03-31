@@ -7,6 +7,30 @@ export interface Attributes {
 
 export type AttributeKey = keyof Attributes;
 
+export type CharacterType = 'boss' | 'colleague' | 'senior' | 'ai' | 'headhunter' | 'hr';
+
+export interface Character {
+  type: CharacterType;
+  name: { zh: string; en: string };
+  icon: string;
+}
+
+export interface SwipeCard {
+  id: string;
+  character: CharacterType;
+  text: { zh: string; en: string };
+  leftChoice: {
+    label: { zh: string; en: string };
+    effects: Partial<Attributes>;
+  };
+  rightChoice: {
+    label: { zh: string; en: string };
+    effects: Partial<Attributes>;
+  };
+  stage: 1 | 2 | 3;
+  careerIds?: string[];
+}
+
 export interface Career {
   id: string;
   name: { zh: string; en: string };
@@ -15,69 +39,43 @@ export interface Career {
   icon: string;
 }
 
-export type EventType = 'opportunity' | 'crisis' | 'life' | 'ai_milestone';
-
-export interface EventOption {
-  id: string;
-  text: { zh: string; en: string };
-  effects: Partial<Attributes>;
-  feedback: { zh: string; en: string };
-  requiresFinance?: number;
-  requiresNetwork?: number;
-}
-
-export interface GameEvent {
-  id: string;
-  type: EventType;
-  title: { zh: string; en: string };
-  description: { zh: string; en: string };
-  options: EventOption[];
-  careerIds?: string[];
-  minYear?: number;
-  maxYear?: number;
-}
-
-export interface AiMilestone {
-  year: number;
-  title: { zh: string; en: string };
-  description: { zh: string; en: string };
-  effects: Partial<Attributes>;
-  careerEffects?: Record<string, Partial<Attributes>>;
-}
-
-export interface Title {
-  id: string;
-  name: { zh: string; en: string };
-  condition: (state: GameState) => boolean;
-  priority: number;
-}
-
-export interface HistoryEntry {
-  year: number;
-  event: GameEvent;
-  chosenOptionId: string;
+export interface SwipeHistory {
+  cardIndex: number;
+  cardId: string;
+  direction: 'left' | 'right';
   attributesBefore: Attributes;
   attributesAfter: Attributes;
-  milestone?: AiMilestone;
 }
 
 export interface GameState {
   careerId: string;
-  currentYear: number;
+  currentCard: number;
   attributes: Attributes;
-  history: HistoryEntry[];
+  history: SwipeHistory[];
   isGameOver: boolean;
-  gameOverReason?: 'safety_zero' | 'won';
+  gameOverReason?: 'attr_zero' | 'attr_max' | 'won';
+  gameOverAttr?: AttributeKey;
   seed: number;
+  deck: SwipeCard[];
 }
 
 export interface GameResult {
   careerId: string;
   finalYear: number;
   finalAttributes: Attributes;
-  titleId: string;
+  endingId: string;
   score: number;
-  history: HistoryEntry[];
+  history: SwipeHistory[];
+  gameOverReason: 'attr_zero' | 'attr_max' | 'won';
+  gameOverAttr?: AttributeKey;
+}
+
+export interface EndingTag {
+  id: string;
+  name: { zh: string; en: string };
+  description: { zh: string; en: string };
+  condition: (state: GameState) => boolean;
+  priority: number;
 }
 
 export type Language = 'zh' | 'en';

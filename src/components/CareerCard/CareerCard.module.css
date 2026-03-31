@@ -1,72 +1,79 @@
 .card {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-sm);
-  width: 100%;
-  padding: var(--space-md);
-  background-color: var(--color-bg-card);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
-  cursor: pointer;
+  gap: 6px;
   text-align: center;
-  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
-}
-
-.card:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
 }
 
 .selected {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(214, 158, 46, 0.25), var(--shadow-md);
-}
-
-.iconWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  background-color: var(--color-bg);
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
+  box-shadow: 0 0 0 3px rgba(214, 158, 46, 0.2);
 }
 
 .icon {
-  font-size: 1.75rem;
+  font-size: 2rem;
   line-height: 1;
-}
-
-.info {
-  flex: 1;
-  min-width: 0;
 }
 
 .name {
   font-family: var(--font-heading);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--color-primary);
-  margin-bottom: var(--space-xs);
-  line-height: 1.3;
+  color: var(--color-text);
 }
 
-.description {
-  font-size: 0.8125rem;
+.desc {
+  font-size: 0.75rem;
   color: var(--color-text-light);
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+
+.bars {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.barRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.barLabel {
+  font-size: 0.65rem;
+  color: var(--color-text-light);
+  width: 32px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.barTrack {
+  flex: 1;
+  height: 4px;
+  background: var(--color-border-light);
+  border-radius: 2px;
   overflow: hidden;
 }
 
-.chart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
+.barFill {
+  height: 100%;
+  border-radius: 2px;
+}
+
+.barValue {
+  font-size: 0.65rem;
+  font-family: var(--font-mono);
+  color: var(--color-text-light);
+  width: 20px;
 }
