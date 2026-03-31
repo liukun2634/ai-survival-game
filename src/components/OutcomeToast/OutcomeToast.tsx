@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { motion } from 'motion/react';
+import { motion, useMotionValue } from 'motion/react';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { ui } from '../../i18n/translations';
 import type { SwipeOutcome } from '../../engine/types';
@@ -17,13 +16,11 @@ const ATTR_META: Record<string, { icon: string; label: string }> = {
   network: { icon: '🤝', label: '人脉' },
 };
 
+const SWIPE_DISMISS_THRESHOLD = 80;
+
 export function OutcomeToast({ outcome, onDismiss }: OutcomeToastProps) {
   const { t } = useLanguage();
-
-  useEffect(() => {
-    const timer = setTimeout(onDismiss, 5000);
-    return () => clearTimeout(timer);
-  }, [onDismiss]);
+  const y = useMotionValue(0);
 
   const effects = Object.entries(outcome.effects)
     .filter(([, v]) => v !== undefined && v !== 0)
@@ -31,6 +28,12 @@ export function OutcomeToast({ outcome, onDismiss }: OutcomeToastProps) {
       const meta = ATTR_META[key];
       return { key, icon: meta?.icon ?? key, label: meta?.label ?? key, val: val! };
     });
+
+  const handleDragEnd = (_: unknown, info: { offset: { y: number }; velocity: { y: number } }) => {
+    if (Math.abs(info.offset.y) > SWIPE_DISMISS_THRESHOLD || Math.abs(info.velocity.y) > 400) {
+      onDismiss();
+    }
+  };
 
   return (
     <motion.div
@@ -43,11 +46,15 @@ export function OutcomeToast({ outcome, onDismiss }: OutcomeToastProps) {
     >
       <motion.div
         className={styles.toast}
+        drag="y"
+        dragConstraints={{ top: 0, bottom: 0 }}
+        dragElastic={0.6}
+        style={{ y }}
+        onDragEnd={handleDragEnd}
         initial={{ opacity: 0, y: 30, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: -20, scale: 0.95 }}
+        exit={{ opacity: 0, y: -60, scale: 0.9, transition: { duration: 0.2 } }}
         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-        onClick={(e) => e.stopPropagation()}
       >
         <p className={styles.toastText}>{t(outcome.text)}</p>
         {effects.length > 0 && (
