@@ -22,14 +22,15 @@ const stage1Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '接受', en: 'Accept' },
-      effects: { skill: 10, safety: -5 },
+      effects: { skill: 8, safety: -5 },
       outcomes: [
-        { id: 's1_boss_ai_accept_good', text: { zh: 'AI 工具部署成功！做了全公司培训，老板赏识！', en: 'AI tool deployed successfully! Company-wide training, boss is impressed!' }, effects: { skill: 12, network: 5 }, weight: 40, careerWeightModifiers: { programmer: 1.5 } },
+        { id: 's1_boss_ai_accept_good', text: { zh: 'AI 工具部署成功！做了全公司培训，老板赏识！', en: 'AI tool deployed successfully! Company-wide training, boss is impressed!' }, effects: { skill: 10, network: 5 }, weight: 40, careerWeightModifiers: { programmer: 1.5 } },
         { id: 's1_boss_ai_accept_mid', text: { zh: '工具还行，学到了一些基础知识。', en: 'Tool was okay. Learned some basics.' }, effects: { skill: 8 }, weight: 35 },
-        { id: 's1_boss_ai_accept_bad', text: { zh: '项目搞砸了，加班善后，被老板训了一顿。', en: 'Project failed. Overtime cleanup. Boss was furious.' }, effects: { safety: -10, skill: 5 }, weight: 25 },
+        { id: 's1_boss_ai_accept_bad', text: { zh: '项目搞砸了，加班善后，被老板训了一顿。', en: 'Project failed. Overtime cleanup. Boss was furious.' }, effects: { safety: -10 }, weight: 25 },
       ],
     },
     stage: 1,
+    scene: 'office',
   },
   {
     id: 's1_senior_work_overtime',
@@ -48,12 +49,13 @@ const stage1Generic: SwipeCard[] = [
       label: { zh: '留下来', en: 'Stay late' },
       effects: { skill: 8, safety: -5 },
       outcomes: [
-        { id: 's1_overtime_stay_good', text: { zh: '加班中前辈教了你很多实战经验，收获满满！', en: 'Senior taught you tons of practical skills during overtime!' }, effects: { skill: 12, network: 5 }, weight: 40 },
+        { id: 's1_overtime_stay_good', text: { zh: '加班中前辈教了你很多实战经验，收获满满！', en: 'Senior taught you tons of practical skills during overtime!' }, effects: { skill: 10, network: 5 }, weight: 40 },
         { id: 's1_overtime_stay_mid', text: { zh: '多学了些东西，但也挺累的。', en: 'Learned a bit, but exhausting.' }, effects: { skill: 8, safety: -5 }, weight: 35 },
-        { id: 's1_overtime_stay_bad', text: { zh: '加班太多身体吃不消，第二天请了病假。', en: 'Too much overtime. Called in sick the next day.' }, effects: { safety: -12, skill: 5 }, weight: 25 },
+        { id: 's1_overtime_stay_bad', text: { zh: '加班太多身体吃不消，第二天请了病假。', en: 'Too much overtime. Called in sick the next day.' }, effects: { safety: -12 }, weight: 25 },
       ],
     },
     stage: 1,
+    scene: 'universal',
   },
   {
     id: 's1_colleague_lunch_invite',
@@ -65,7 +67,7 @@ const stage1Generic: SwipeCard[] = [
       outcomes: [
         { id: 's1_lunch_alone_good', text: { zh: '午休看了技术文章，灵感迸发解决了一个难题！', en: 'Read a tech article at lunch, got inspired and solved a tough problem!' }, effects: { skill: 10 }, weight: 35 },
         { id: 's1_lunch_alone_mid', text: { zh: '安静的午餐，休息得不错。', en: 'Quiet lunch. Good rest.' }, effects: { skill: 5 }, weight: 40 },
-        { id: 's1_lunch_alone_bad', text: { zh: '同事觉得你不合群，下次项目没叫你。', en: 'Colleagues think you\'re antisocial. Left out of next project.' }, effects: { skill: 5, network: -8 }, weight: 25 },
+        { id: 's1_lunch_alone_bad', text: { zh: '同事觉得你不合群，下次项目没叫你。', en: 'Colleagues think you\'re antisocial. Left out of next project.' }, effects: { skill: -3, network: -8 }, weight: 25 },
       ],
     },
     rightChoice: {
@@ -78,6 +80,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'universal',
   },
   {
     id: 's1_hr_training_program',
@@ -94,14 +97,15 @@ const stage1Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '报名', en: 'Sign up' },
-      effects: { skill: 10, finance: -5 },
+      effects: { skill: 8, finance: -5 },
       outcomes: [
-        { id: 's1_training_join_good', text: { zh: '课程收获巨大！学会了用 AI 做高级 PPT，被老板赏识！', en: 'Course was amazing! Learned AI-powered presentations, boss is impressed!' }, effects: { skill: 12, network: 5, finance: -5 }, weight: 40, careerWeightModifiers: { teacher: 1.5 } },
+        { id: 's1_training_join_good', text: { zh: '课程收获巨大！学会了用 AI 做高级 PPT，被老板赏识！', en: 'Course was amazing! Learned AI-powered presentations, boss is impressed!' }, effects: { skill: 10, network: 5, finance: -5 }, weight: 40, careerWeightModifiers: { teacher: 1.5 } },
         { id: 's1_training_join_mid', text: { zh: '培训内容还行，学到了一些基础。', en: 'Training was okay. Picked up the basics.' }, effects: { skill: 10, finance: -5 }, weight: 35 },
         { id: 's1_training_join_bad', text: { zh: '培训是个坑，内容粗糙，钱白花了。', en: 'Training was a scam. Shallow content. Money wasted.' }, effects: { skill: 3, finance: -10 }, weight: 25 },
       ],
     },
     stage: 1,
+    scene: 'universal',
   },
   {
     id: 's1_boss_weekend_project',
@@ -126,6 +130,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'office',
   },
   {
     id: 's1_ai_chatbot_launch',
@@ -150,6 +155,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'universal',
   },
   {
     id: 's1_colleague_side_hustle',
@@ -174,6 +180,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'universal',
   },
   {
     id: 's1_senior_mentor_advice',
@@ -183,7 +190,7 @@ const stage1Generic: SwipeCard[] = [
       label: { zh: '继续钻研', en: 'Keep studying' },
       effects: { skill: 8, network: -5 },
       outcomes: [
-        { id: 's1_mentor_study_good', text: { zh: '闷头钻研三个月，发表了技术博客，被大佬转发！', en: '闷头钻研三个月，发表了技术博客，被大佬转发！' }, effects: { skill: 12, network: 3 }, weight: 35, careerWeightModifiers: { programmer: 1.5 } },
+        { id: 's1_mentor_study_good', text: { zh: '闷头钻研三个月，发表了技术博客，被大佬转发！', en: '闷头钻研三个月，发表了技术博客，被大佬转发！' }, effects: { skill: 10, network: 3 }, weight: 35, careerWeightModifiers: { programmer: 1.5 } },
         { id: 's1_mentor_study_mid', text: { zh: '技术进步了，但社交圈确实小了点。', en: '技术进步了，但社交圈确实小了点。' }, effects: { skill: 8, network: -5 }, weight: 40 },
         { id: 's1_mentor_study_bad', text: { zh: '闭门造车，方向搞偏了，白费功夫。', en: '闭门造车，方向搞偏了，白费功夫。' }, effects: { skill: -5, network: -8 }, weight: 25 },
       ],
@@ -198,6 +205,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'universal',
   },
   {
     id: 's1_boss_performance_review',
@@ -222,6 +230,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'office',
   },
   {
     id: 's1_hr_team_building',
@@ -246,6 +255,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'universal',
   },
   {
     id: 's1_ai_automate_report',
@@ -257,7 +267,7 @@ const stage1Generic: SwipeCard[] = [
       outcomes: [
         { id: 's1_report_manual_good', text: { zh: '手写周报被老板夸"有深度"，成了模板在部门推广。', en: '手写周报被老板夸"有深度"，成了模板在部门推广。' }, effects: { skill: 8, network: 5 }, weight: 35 },
         { id: 's1_report_manual_mid', text: { zh: '写得认真，但也花了不少时间。', en: '写得认真，但也花了不少时间。' }, effects: { skill: 5, safety: 5 }, weight: 40 },
-        { id: 's1_report_manual_bad', text: { zh: '花了一下午写周报，核心工作反而没干完。', en: '花了一下午写周报，核心工作反而没干完。' }, effects: { safety: -5, skill: 3 }, weight: 25 },
+        { id: 's1_report_manual_bad', text: { zh: '花了一下午写周报，核心工作反而没干完。', en: '花了一下午写周报，核心工作反而没干完。' }, effects: { safety: -5 }, weight: 25 },
       ],
     },
     rightChoice: {
@@ -270,6 +280,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'office',
   },
   {
     id: 's1_headhunter_first_call',
@@ -294,6 +305,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'universal',
   },
   {
     id: 's1_colleague_certification',
@@ -312,12 +324,13 @@ const stage1Generic: SwipeCard[] = [
       label: { zh: '一起考', en: 'Study together' },
       effects: { skill: 8, network: 5, finance: -5 },
       outcomes: [
-        { id: 's1_cert_yes_good', text: { zh: '一次考过！简历上多了个含金量很高的证书，HR 们抢着递橄榄枝。', en: '一次考过！简历上多了个含金量很高的证书，HR 们抢着递橄榄枝。' }, effects: { skill: 12, network: 8, finance: -5 }, weight: 35 },
+        { id: 's1_cert_yes_good', text: { zh: '一次考过！简历上多了个含金量很高的证书，HR 们抢着递橄榄枝。', en: '一次考过！简历上多了个含金量很高的证书，HR 们抢着递橄榄枝。' }, effects: { skill: 10, network: 8, finance: -5 }, weight: 35 },
         { id: 's1_cert_yes_mid', text: { zh: '考了两次才过，学到了不少东西。', en: '考了两次才过，学到了不少东西。' }, effects: { skill: 8, network: 5, finance: -5 }, weight: 40 },
         { id: 's1_cert_yes_bad', text: { zh: '考试没过，报名费白花了，还浪费了好多周末。', en: '考试没过，报名费白花了，还浪费了好多周末。' }, effects: { skill: 3, finance: -10 }, weight: 25 },
       ],
     },
     stage: 1,
+    scene: 'universal',
   },
   {
     id: 's1_boss_present_to_client',
@@ -342,6 +355,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'office',
   },
   {
     id: 's1_senior_save_money',
@@ -366,6 +380,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'universal',
   },
   // Career-specific: programmer
   {
@@ -383,14 +398,15 @@ const stage1Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '试试', en: 'Let\'s try' },
-      effects: { skill: 10, safety: -8 },
+      effects: { skill: 8, safety: -8 },
       outcomes: [
-        { id: 's1_codereview_ai_good', text: { zh: 'AI Review 效率爆表，你被提拔为技术委员会成员！', en: 'AI review was incredibly efficient. You got promoted to the tech committee!' }, effects: { skill: 15, network: 8 }, weight: 40, careerWeightModifiers: { programmer: 1.5 } },
+        { id: 's1_codereview_ai_good', text: { zh: 'AI Review 效率爆表，你被提拔为技术委员会成员！', en: 'AI review was incredibly efficient. You got promoted to the tech committee!' }, effects: { skill: 10, network: 8 }, weight: 40, careerWeightModifiers: { programmer: 1.5 } },
         { id: 's1_codereview_ai_mid', text: { zh: 'AI 审查还不错，减少了些重复工作。', en: 'AI review was decent. Reduced some repetitive work.' }, effects: { skill: 10, safety: -8 }, weight: 35 },
-        { id: 's1_codereview_ai_bad', text: { zh: 'AI 漏掉了关键问题，线上出了 bug，得加班修复。', en: 'AI missed a critical issue. Production bug. Overtime to fix.' }, effects: { safety: -15, skill: 5 }, weight: 25 },
+        { id: 's1_codereview_ai_bad', text: { zh: 'AI 漏掉了关键问题，线上出了 bug，得加班修复。', en: 'AI missed a critical issue. Production bug. Overtime to fix.' }, effects: { safety: -15 }, weight: 25 },
       ],
     },
     stage: 1,
+    scene: 'office',
     careerIds: ['programmer'],
   },
   {
@@ -410,13 +426,65 @@ const stage1Generic: SwipeCard[] = [
       label: { zh: '开始用', en: 'Start using' },
       effects: { skill: 8, safety: -5 },
       outcomes: [
-        { id: 's1_copilot_yes_good', text: { zh: 'Copilot + 你的审查 = 效率翻倍！团队全面推广。', en: 'Copilot + 你的审查 = 效率翻倍！团队全面推广。' }, effects: { skill: 12, network: 5 }, weight: 40, careerWeightModifiers: { programmer: 1.5 } },
+        { id: 's1_copilot_yes_good', text: { zh: 'Copilot + 你的审查 = 效率翻倍！团队全面推广。', en: 'Copilot + 你的审查 = 效率翻倍！团队全面推广。' }, effects: { skill: 10, network: 5 }, weight: 40, careerWeightModifiers: { programmer: 1.5 } },
         { id: 's1_copilot_yes_mid', text: { zh: '写代码确实快了，但有时候要改 AI 写的奇怪逻辑。', en: '写代码确实快了，但有时候要改 AI 写的奇怪逻辑。' }, effects: { skill: 8, safety: -5 }, weight: 35 },
         { id: 's1_copilot_yes_bad', text: { zh: 'Copilot 引入了安全漏洞，线上被黑客攻击！全员加班修复。', en: 'Copilot 引入了安全漏洞，线上被黑客攻击！全员加班修复。' }, effects: { safety: -15 }, weight: 25 },
       ],
     },
     stage: 1,
+    scene: 'office',
     careerIds: ['programmer'],
+  },
+  // Scene-generic: creative_studio (available to designer + content_creator)
+  {
+    id: 's1_boss_creative_brief',
+    character: 'boss',
+    text: { zh: '甲方需求写了三个字"高大上"，但后天就要终稿，怎么办？', en: 'Client brief just says "make it premium" — and the final draft is due in two days. What do you do?' },
+    leftChoice: {
+      label: { zh: '按自己理解做', en: 'Interpret freely' },
+      effects: { skill: 5, safety: -5 },
+      outcomes: [
+        { id: 's1_creative_brief_left_good', text: { zh: '你的自由发挥竟然完美命中甲方审美，对方激动地说"就是这个感觉！"', en: 'Your creative interpretation nailed it. Client was thrilled: "This is exactly what I wanted!"' }, effects: { skill: 10, network: 5 }, weight: 35 },
+        { id: 's1_creative_brief_left_mid', text: { zh: '做出来了，甲方说"差不多吧"，改了几个小地方就过了。', en: 'Delivered on time. Client said "close enough" and requested minor tweaks.' }, effects: { skill: 5, safety: -5 }, weight: 40 },
+        { id: 's1_creative_brief_left_bad', text: { zh: '甲方看完直摇头："这不是我要的高大上！"推翻重做，通宵加班。', en: 'Client shook their head: "This isn\'t premium at all!" Back to square one. All-nighter incoming.' }, effects: { skill: -5, safety: -10 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '反复确认需求', en: 'Clarify requirements' },
+      effects: { network: 8, safety: 3 },
+      outcomes: [
+        { id: 's1_creative_brief_right_good', text: { zh: '经过三轮沟通，甲方终于说清了想要什么，你精准交付，口碑爆棚。', en: 'After three rounds of calls, the client finally articulated their vision. You delivered perfectly. Reputation soared.' }, effects: { network: 10, safety: 8 }, weight: 35 },
+        { id: 's1_creative_brief_right_mid', text: { zh: '确认清楚后顺利交付，甲方表示满意，就是沟通花了不少时间。', en: 'Requirements clarified, delivery smooth. Client was satisfied, though the back-and-forth ate up time.' }, effects: { network: 8, safety: 3 }, weight: 40 },
+        { id: 's1_creative_brief_right_bad', text: { zh: '确认了五遍甲方自己也说不清，最后项目延期，双方都很累。', en: 'Five rounds of clarification and the client still couldn\'t decide. Project delayed. Everyone exhausted.' }, effects: { network: -5, safety: -5 }, weight: 25 },
+      ],
+    },
+    stage: 1,
+    scene: 'creative_studio',
+  },
+  {
+    id: 's1_colleague_portfolio_collab',
+    character: 'colleague',
+    text: { zh: '一个设计圈的朋友约你联合办个作品集展："咱俩风格互补，一起搞肯定炸！"', en: 'A creative peer invites you to co-host a portfolio exhibition: "Our styles complement each other — it\'ll be a hit!"' },
+    leftChoice: {
+      label: { zh: '拒绝', en: 'Decline' },
+      effects: { safety: 5 },
+      outcomes: [
+        { id: 's1_portfolio_collab_left_good', text: { zh: '省下时间专注打磨个人作品，后来被一个大客户看中。', en: 'Used the time to polish your own portfolio. A major client noticed your work later.' }, effects: { safety: 8, skill: 5 }, weight: 35 },
+        { id: 's1_portfolio_collab_left_mid', text: { zh: '没参加也没啥影响，日子照常过。', en: 'Didn\'t attend. Life went on as usual.' }, effects: { safety: 5 }, weight: 40 },
+        { id: 's1_portfolio_collab_left_bad', text: { zh: '朋友的展览大获成功，你看着朋友圈的刷屏默默后悔。', en: 'The exhibition was a smash hit. You scrolled through the hype posts with regret.' }, effects: { safety: -3, network: -5 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '参与', en: 'Join' },
+      effects: { network: 8, skill: 5, finance: -5 },
+      outcomes: [
+        { id: 's1_portfolio_collab_right_good', text: { zh: '展览引来了好几个新客户，还有媒体来采访，朋友圈都在转发！', en: 'Exhibition attracted new clients and media coverage. Your social feed blew up!' }, effects: { network: 12, skill: 8, finance: 5 }, weight: 35 },
+        { id: 's1_portfolio_collab_right_mid', text: { zh: '展览反响不错，认识了一些同行，花了点布展费用但值得。', en: 'Decent turnout. Met some peers. Spent money on setup but it was worthwhile.' }, effects: { network: 8, skill: 5, finance: -5 }, weight: 40 },
+        { id: 's1_portfolio_collab_right_bad', text: { zh: '展览当天下大雨没几个人来，布展费白花了，还跟朋友因为分工吵了一架。', en: 'Torrential rain on opening day. Almost no visitors. Wasted the setup budget and argued with your partner about responsibilities.' }, effects: { network: -5, finance: -8 }, weight: 25 },
+      ],
+    },
+    stage: 1,
+    scene: 'creative_studio',
   },
   // Career-specific: designer
   {
@@ -436,12 +504,13 @@ const stage1Generic: SwipeCard[] = [
       label: { zh: '可以试试', en: 'Worth trying' },
       effects: { skill: 8, safety: -8 },
       outcomes: [
-        { id: 's1_design_ai_good', text: { zh: 'AI 出图 + 你的审美眼光 = 客户直呼"太牛了"！', en: 'AI 出图 + 你的审美眼光 = 客户直呼"太牛了"！' }, effects: { skill: 12, finance: 5 }, weight: 40, careerWeightModifiers: { designer: 1.5 } },
+        { id: 's1_design_ai_good', text: { zh: 'AI 出图 + 你的审美眼光 = 客户直呼"太牛了"！', en: 'AI 出图 + 你的审美眼光 = 客户直呼"太牛了"！' }, effects: { skill: 10, finance: 5 }, weight: 40, careerWeightModifiers: { designer: 1.5 } },
         { id: 's1_design_ai_mid', text: { zh: 'AI 出图效果一般，但节省了不少时间。', en: 'AI 出图效果一般，但节省了不少时间。' }, effects: { skill: 8, safety: -8 }, weight: 35 },
         { id: 's1_design_ai_bad', text: { zh: 'AI 出的图风格诡异，客户看了直接吓跑。', en: 'AI 出的图风格诡异，客户看了直接吓跑。' }, effects: { safety: -12, network: -5 }, weight: 25 },
       ],
     },
     stage: 1,
+    scene: 'creative_studio',
     careerIds: ['designer'],
   },
   {
@@ -454,7 +523,7 @@ const stage1Generic: SwipeCard[] = [
       outcomes: [
         { id: 's1_portfolio_solo_good', text: { zh: '独立作品集风格鲜明，被设计杂志收录！', en: '独立作品集风格鲜明，被设计杂志收录！' }, effects: { skill: 10, network: 5 }, weight: 35 },
         { id: 's1_portfolio_solo_mid', text: { zh: '做了个还不错的作品集，放在简历上。', en: '做了个还不错的作品集，放在简历上。' }, effects: { skill: 5 }, weight: 40 },
-        { id: 's1_portfolio_solo_bad', text: { zh: '独自做的作品集太自嗨了，反响平平。', en: '独自做的作品集太自嗨了，反响平平。' }, effects: { skill: 3, network: -5 }, weight: 25 },
+        { id: 's1_portfolio_solo_bad', text: { zh: '独自做的作品集太自嗨了，反响平平。', en: '独自做的作品集太自嗨了，反响平平。' }, effects: { network: -5 }, weight: 25 },
       ],
     },
     rightChoice: {
@@ -467,7 +536,59 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'creative_studio',
     careerIds: ['designer'],
+  },
+  // School scene: general (no careerIds)
+  {
+    id: 's1_hr_parent_conference',
+    character: 'hr',
+    text: { zh: '家长群里炸锅了——小明妈妈要求面谈，说孩子成绩下滑都怪老师。你怎么办？', en: 'The parent chat exploded — a mom demands a meeting, blaming you for her kid\'s dropping grades. What do you do?' },
+    leftChoice: {
+      label: { zh: '推脱', en: 'Postpone' },
+      effects: { safety: -5 },
+      outcomes: [
+        { id: 's1_parent_conf_left_good', text: { zh: '家长自己冷静下来了，事情不了了之。', en: 'The parent calmed down on their own. It blew over.' }, effects: { safety: 5 }, weight: 35 },
+        { id: 's1_parent_conf_left_mid', text: { zh: '推了几天，家长直接找校长投诉了。', en: 'You delayed a few days. The parent went straight to the principal.' }, effects: { safety: -5 }, weight: 40 },
+        { id: 's1_parent_conf_left_bad', text: { zh: '家长在朋友圈公开吐槽你，其他家长跟风质疑。', en: 'The parent publicly roasted you online. Other parents piled on.' }, effects: { safety: -10, network: -5 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '认真接待', en: 'Meet them' },
+      effects: { network: 8, safety: -3 },
+      outcomes: [
+        { id: 's1_parent_conf_right_good', text: { zh: '你耐心分析了成绩下滑原因，家长感动得给你送了面锦旗。', en: 'You patiently explained the situation. The parent was so moved they sent a thank-you banner.' }, effects: { network: 10, safety: 5 }, weight: 35 },
+        { id: 's1_parent_conf_right_mid', text: { zh: '面谈还算顺利，家长表示愿意配合改进。', en: 'The meeting went okay. The parent agreed to cooperate on improvements.' }, effects: { network: 8 }, weight: 40 },
+        { id: 's1_parent_conf_right_bad', text: { zh: '你认真准备了资料，但家长全程甩锅，白忙一场。', en: 'You prepared materials carefully, but the parent blamed everyone else. Wasted effort.' }, effects: { network: -3, safety: -5 }, weight: 25 },
+      ],
+    },
+    stage: 1,
+    scene: 'school',
+  },
+  {
+    id: 's1_boss_substitute_class',
+    character: 'boss',
+    text: { zh: '"数学组的张老师请病假了，今天你能帮忙代一节高三的课吗？"', en: '"The math teacher called in sick. Can you cover a senior-year class today?"' },
+    leftChoice: {
+      label: { zh: '拒绝', en: 'Decline' },
+      effects: { network: -5 },
+      outcomes: [
+        { id: 's1_substitute_left_good', text: { zh: '校长找到了别人代课，没人怪你。', en: 'The principal found someone else. No one blamed you.' }, effects: { safety: 5 }, weight: 35 },
+        { id: 's1_substitute_left_mid', text: { zh: '同事们有点不满，觉得你不够团队精神。', en: 'Colleagues were a bit annoyed. They think you lack team spirit.' }, effects: { network: -5 }, weight: 40 },
+        { id: 's1_substitute_left_bad', text: { zh: '校长记住了这件事，年终考核被扣了印象分。', en: 'The principal remembered this. It cost you points in the annual review.' }, effects: { network: -8, safety: -5 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '帮忙', en: 'Cover it' },
+      effects: { network: 8, safety: -5 },
+      outcomes: [
+        { id: 's1_substitute_right_good', text: { zh: '你的代课风格深受学生喜欢，学生们都说你比原来的老师有趣！', en: 'Students loved your style! They said you were way more fun than the regular teacher!' }, effects: { network: 10, skill: 5 }, weight: 35 },
+        { id: 's1_substitute_right_mid', text: { zh: '顺利完成了代课，同事感谢你的帮忙。', en: 'Class went fine. The colleague thanked you for helping out.' }, effects: { network: 8 }, weight: 40 },
+        { id: 's1_substitute_right_bad', text: { zh: '代课内容不熟，被学生问倒了，有点尴尬。', en: 'You weren\'t familiar with the material. Students stumped you. Awkward.' }, effects: { skill: -5, safety: -5 }, weight: 25 },
+      ],
+    },
+    stage: 1,
+    scene: 'school',
   },
   // Career-specific: teacher
   {
@@ -493,6 +614,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'school',
     careerIds: ['teacher'],
   },
   {
@@ -512,13 +634,65 @@ const stage1Generic: SwipeCard[] = [
       label: { zh: '参加', en: 'Sign up' },
       effects: { skill: 8, finance: 5, safety: -5 },
       outcomes: [
-        { id: 's1_teach_comp_yes_good', text: { zh: '教学竞赛拿了一等奖！校长亲自颁奖，当月多发了奖金。', en: '教学竞赛拿了一等奖！校长亲自颁奖，当月多发了奖金。' }, effects: { skill: 12, finance: 10, network: 5 }, weight: 35, careerWeightModifiers: { teacher: 1.5 } },
+        { id: 's1_teach_comp_yes_good', text: { zh: '教学竞赛拿了一等奖！校长亲自颁奖，当月多发了奖金。', en: '教学竞赛拿了一等奖！校长亲自颁奖，当月多发了奖金。' }, effects: { skill: 10, finance: 10, network: 5 }, weight: 35, careerWeightModifiers: { teacher: 1.5 } },
         { id: 's1_teach_comp_yes_mid', text: { zh: '拿了个三等奖，还算有点收获。', en: '拿了个三等奖，还算有点收获。' }, effects: { skill: 8, finance: 5, safety: -5 }, weight: 40 },
         { id: 's1_teach_comp_yes_bad', text: { zh: '准备到半夜结果初赛就被刷了，身心俱疲。', en: '准备到半夜结果初赛就被刷了，身心俱疲。' }, effects: { safety: -10, skill: 3 }, weight: 25 },
       ],
     },
     stage: 1,
+    scene: 'school',
     careerIds: ['teacher'],
+  },
+  // Scene-specific: hospital (available to all careers with hospital scene)
+  {
+    id: 's1_hr_medical_conference',
+    character: 'hr',
+    text: { zh: '全国学术会议下周开，你要去参加吗？听说有院士做主题报告。', en: '"National medical conference next week. Attend? Rumor has it an academician is giving the keynote."' },
+    leftChoice: {
+      label: { zh: '不去', en: 'Skip' },
+      effects: { safety: 5 },
+      outcomes: [
+        { id: 's1_med_conf_left_good', text: { zh: '没去开会，趁空把积压的病历全整理完了，主任竖起大拇指。', en: 'Skipped the conference and cleared your backlog of patient records. Director gave you a thumbs up.' }, effects: { safety: 8, network: 3 }, weight: 35 },
+        { id: 's1_med_conf_left_mid', text: { zh: '同事回来分享了会议内容，你听了个二手版也算了解了。', en: 'Colleague shared conference highlights when they got back. Secondhand knowledge is still knowledge.' }, effects: { safety: 5 }, weight: 40 },
+        { id: 's1_med_conf_left_bad', text: { zh: '院长在会上认识了新合作伙伴，回来问谁没去——你被点名了。', en: 'Director met new partners at the conference. Asked who didn\'t attend — your name came up.' }, effects: { safety: -3, network: -5 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '参加', en: 'Attend' },
+      effects: { skill: 8, network: 5, finance: -5 },
+      outcomes: [
+        { id: 's1_med_conf_right_good', text: { zh: '会上和一位大佬交换了微信，回来后合作了一个课题！', en: 'Exchanged WeChat with a big-name researcher at the conference. Landed a research collaboration!' }, effects: { skill: 10, network: 10, finance: -5 }, weight: 35 },
+        { id: 's1_med_conf_right_mid', text: { zh: '学到了一些前沿知识，顺便吃了几天五星级自助餐。', en: 'Picked up some cutting-edge knowledge and enjoyed five-star buffets for a few days.' }, effects: { skill: 8, network: 5, finance: -5 }, weight: 40 },
+        { id: 's1_med_conf_right_bad', text: { zh: '会议论文被同行当场质疑，场面一度非常尴尬。', en: 'Your conference paper got challenged on the spot. The awkwardness was palpable.' }, effects: { skill: 3, safety: -8, finance: -5 }, weight: 25 },
+      ],
+    },
+    stage: 1,
+    scene: 'hospital',
+  },
+  {
+    id: 's1_colleague_patient_complaint',
+    character: 'colleague',
+    text: { zh: '患者投诉了你同事的处理方式，同事急得快哭了，让你帮忙协调。', en: '"A patient complained about your colleague\'s handling. Your colleague is on the verge of tears. Help mediate?"' },
+    leftChoice: {
+      label: { zh: '不管', en: 'Stay out' },
+      effects: { safety: 5 },
+      outcomes: [
+        { id: 's1_complaint_left_good', text: { zh: '同事自己解决了，还因此成长了不少，后来请你喝了杯奶茶。', en: 'Colleague handled it alone and grew from the experience. Bought you boba tea afterward.' }, effects: { safety: 8 }, weight: 35 },
+        { id: 's1_complaint_left_mid', text: { zh: '事情不了了之，同事默默消化了，你心里也没什么波澜。', en: 'It fizzled out quietly. Colleague dealt with it. You felt nothing.' }, effects: { safety: 5 }, weight: 40 },
+        { id: 's1_complaint_left_bad', text: { zh: '同事觉得你见死不救，从此在科里给你穿小鞋。', en: 'Colleague felt you abandoned them. Started making your life difficult in the department.' }, effects: { safety: -3, network: -8 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '帮忙', en: 'Help out' },
+      effects: { network: 8, safety: -5 },
+      outcomes: [
+        { id: 's1_complaint_right_good', text: { zh: '你三言两语把患者哄好了，同事对你感恩戴德，科室和谐值拉满。', en: 'You calmed the patient with a few words. Colleague worships you now. Department harmony maxed out.' }, effects: { network: 10, safety: 3 }, weight: 35 },
+        { id: 's1_complaint_right_mid', text: { zh: '调解了半天总算平息，但你的门诊也因此延误了。', en: 'Spent hours mediating. Resolved it, but your own clinic hours fell behind.' }, effects: { network: 8, safety: -5 }, weight: 40 },
+        { id: 's1_complaint_right_bad', text: { zh: '患者把怒火转移到了你身上，还投诉了你"态度不好"。', en: 'Patient redirected their anger at you. Filed a complaint about YOUR attitude.' }, effects: { network: 3, safety: -10 }, weight: 25 },
+      ],
+    },
+    stage: 1,
+    scene: 'hospital',
   },
   // Career-specific: doctor
   {
@@ -536,14 +710,15 @@ const stage1Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '积极参与', en: 'Get involved' },
-      effects: { skill: 10, safety: -5 },
+      effects: { skill: 8, safety: -5 },
       outcomes: [
-        { id: 's1_ai_diagnosis_right_good', text: { zh: '你提出的临床反馈被采纳，成了科室里的"AI 专家"，主任很赏识。', en: 'Your clinical feedback was adopted. You became the department\'s "AI expert." Director impressed.' }, effects: { skill: 12, network: 8 }, weight: 35, careerWeightModifiers: { doctor: 1.5 } },
+        { id: 's1_ai_diagnosis_right_good', text: { zh: '你提出的临床反馈被采纳，成了科室里的"AI 专家"，主任很赏识。', en: 'Your clinical feedback was adopted. You became the department\'s "AI expert." Director impressed.' }, effects: { skill: 10, network: 8 }, weight: 35, careerWeightModifiers: { doctor: 1.5 } },
         { id: 's1_ai_diagnosis_right_mid', text: { zh: '参与了几次培训和会议，学到了些东西但日常工作也堆积了不少。', en: 'Attended trainings and meetings. Learned a lot but regular work piled up.' }, effects: { skill: 8, safety: -5 }, weight: 40 },
-        { id: 's1_ai_diagnosis_right_bad', text: { zh: 'AI 系统误诊了一例，你作为参与者被要求写事故报告，压力山大。', en: 'AI system misdiagnosed a case. As a participant, you had to write the incident report. Stressful.' }, effects: { skill: 5, safety: -10 }, weight: 25 },
+        { id: 's1_ai_diagnosis_right_bad', text: { zh: 'AI 系统误诊了一例，你作为参与者被要求写事故报告，压力山大。', en: 'AI system misdiagnosed a case. As a participant, you had to write the incident report. Stressful.' }, effects: { safety: -10 }, weight: 25 },
       ],
     },
     stage: 1,
+    scene: 'hospital',
     careerIds: ['doctor'],
   },
   {
@@ -569,6 +744,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'hospital',
     careerIds: ['doctor'],
   },
   // Career-specific: content_creator
@@ -578,11 +754,11 @@ const stage1Generic: SwipeCard[] = [
     text: { zh: '"AI 写作助手可以帮你日更。"', en: '"AI writing assistant can help you post daily."' },
     leftChoice: {
       label: { zh: '原创', en: 'Stay original' },
-      effects: { skill: 8, safety: 5 },
+      effects: { skill: 8, safety: 5, network: -3 },
       outcomes: [
         { id: 's1_ai_content_left_good', text: { zh: '你的原创文章意外爆火，粉丝留言说"终于看到有温度的内容了"。', en: 'Your original article went viral. Fans commented "finally, content with soul."' }, effects: { skill: 10, network: 8 }, weight: 35, careerWeightModifiers: { content_creator: 1.5 } },
         { id: 's1_ai_content_left_mid', text: { zh: '坚持原创虽然辛苦，但作品质量保持稳定，粉丝缓慢增长。', en: 'Staying original was tough, but quality remained steady and followers grew slowly.' }, effects: { skill: 8, safety: 5 }, weight: 40 },
-        { id: 's1_ai_content_left_bad', text: { zh: '原创速度太慢，断更了一周，平台算法直接把你的推荐权重砍了。', en: 'Couldn\'t keep up the pace. Missed a week of posts and the algorithm tanked your reach.' }, effects: { skill: 5, finance: -5, safety: -5 }, weight: 25 },
+        { id: 's1_ai_content_left_bad', text: { zh: '原创速度太慢，断更了一周，平台算法直接把你的推荐权重砍了。', en: 'Couldn\'t keep up the pace. Missed a week of posts and the algorithm tanked your reach.' }, effects: { finance: -5, safety: -5 }, weight: 25 },
       ],
     },
     rightChoice: {
@@ -595,6 +771,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'creative_studio',
     careerIds: ['content_creator'],
   },
   {
@@ -620,6 +797,7 @@ const stage1Generic: SwipeCard[] = [
       ],
     },
     stage: 1,
+    scene: 'creative_studio',
     careerIds: ['content_creator'],
   },
 ];
@@ -654,6 +832,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'office',
   },
   {
     id: 's2_ai_replace_junior',
@@ -670,14 +849,15 @@ const stage2Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '升级技能', en: 'Upskill' },
-      effects: { skill: 15, finance: -10 },
+      effects: { skill: 12, finance: -10 },
       outcomes: [
-        { id: 's2_replace_junior_right_good', text: { zh: '新技能让你成了团队里唯一能驾驭 AI 工具的人，升职了！', en: 'New skills made you the only one who could wield AI tools. Promoted!' }, effects: { skill: 20, finance: 10 }, weight: 35 },
+        { id: 's2_replace_junior_right_good', text: { zh: '新技能让你成了团队里唯一能驾驭 AI 工具的人，升职了！', en: 'New skills made you the only one who could wield AI tools. Promoted!' }, effects: { skill: 15, finance: 10 }, weight: 35 },
         { id: 's2_replace_junior_right_mid', text: { zh: '花了不少钱报班，学了一些但还没派上用场。', en: "Spent money on courses. Learned a bit but haven't applied it yet." }, effects: { skill: 15, finance: -10 }, weight: 40 },
         { id: 's2_replace_junior_right_bad', text: { zh: '报了天价培训班，结果内容过时了，钱打了水漂。', en: 'Signed up for expensive bootcamp. Content was outdated. Money wasted.' }, effects: { skill: -5, finance: -20 }, weight: 25 },
       ],
     },
     stage: 2,
+    scene: 'universal',
   },
   {
     id: 's2_headhunter_rival_offer',
@@ -702,6 +882,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'universal',
   },
   {
     id: 's2_boss_lead_ai_project',
@@ -718,14 +899,15 @@ const stage2Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '接手', en: 'Take charge' },
-      effects: { skill: 15, network: 10, safety: -15 },
+      effects: { skill: 12, network: 10, safety: -15 },
       outcomes: [
-        { id: 's2_lead_ai_right_good', text: { zh: '项目大获成功，你成了公司 AI 转型的功臣！', en: "Project was a huge success. You became the hero of the company's AI transformation!" }, effects: { skill: 20, network: 15, finance: 10 }, weight: 35 },
+        { id: 's2_lead_ai_right_good', text: { zh: '项目大获成功，你成了公司 AI 转型的功臣！', en: "Project was a huge success. You became the hero of the company's AI transformation!" }, effects: { skill: 15, network: 15, finance: 10 }, weight: 35 },
         { id: 's2_lead_ai_right_mid', text: { zh: '项目磕磕绊绊推进中，虽然累但学到不少。', en: 'Project is bumpy but progressing. Exhausting, but you learned a lot.' }, effects: { skill: 15, network: 10, safety: -15 }, weight: 40 },
         { id: 's2_lead_ai_right_bad', text: { zh: '项目严重超预算，老板把锅甩给你，你成了全公司的靶子。', en: 'Project went way over budget. Boss blamed you. You became the company scapegoat.' }, effects: { safety: -20, network: -15 }, weight: 25 },
       ],
     },
     stage: 2,
+    scene: 'office',
   },
   {
     id: 's2_colleague_startup_idea',
@@ -742,14 +924,15 @@ const stage2Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '辞职创业', en: 'Quit and join' },
-      effects: { finance: -20, skill: 15, network: 10 },
+      effects: { finance: -20, skill: 12, network: 10 },
       outcomes: [
-        { id: 's2_startup_yes_good', text: { zh: '创业产品大火，拿到了 A 轮融资！', en: 'Startup product went viral. Secured Series A funding!' }, effects: { finance: 10, skill: 20, network: 15 }, weight: 30 },
+        { id: 's2_startup_yes_good', text: { zh: '创业产品大火，拿到了 A 轮融资！', en: 'Startup product went viral. Secured Series A funding!' }, effects: { finance: 10, skill: 15, network: 15 }, weight: 30 },
         { id: 's2_startup_yes_mid', text: { zh: '创业艰难但学到了很多，产品在运营中。', en: 'Startup is tough but educational. Product is live.' }, effects: { finance: -20, skill: 15, network: 10 }, weight: 40 },
         { id: 's2_startup_yes_bad', text: { zh: '烧光积蓄，产品上线无人问津，合伙人还跑了。', en: 'Burned savings. Product flopped. Co-founder bailed.' }, effects: { finance: -25, safety: -15, network: -10 }, weight: 30 },
       ],
     },
     stage: 2,
+    scene: 'universal',
   },
   {
     id: 's2_ai_industry_report',
@@ -774,6 +957,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'universal',
   },
   {
     id: 's2_senior_promote_tip',
@@ -781,11 +965,11 @@ const stage2Generic: SwipeCard[] = [
     text: { zh: '"想升管理层？得学会放弃技术执念。"', en: '"Want management? Learn to let go of tech obsession."' },
     leftChoice: {
       label: { zh: '走技术路', en: 'Stay technical' },
-      effects: { skill: 15, network: -10 },
+      effects: { skill: 12, network: -10 },
       outcomes: [
-        { id: 's2_promote_tip_left_good', text: { zh: '深耕技术让你成了不可替代的架构师，薪资反超管理层。', en: 'Deep tech expertise made you an irreplaceable architect. Salary surpassed management.' }, effects: { skill: 20, finance: 15 }, weight: 35 },
+        { id: 's2_promote_tip_left_good', text: { zh: '深耕技术让你成了不可替代的架构师，薪资反超管理层。', en: 'Deep tech expertise made you an irreplaceable architect. Salary surpassed management.' }, effects: { skill: 15, finance: 15 }, weight: 35 },
         { id: 's2_promote_tip_left_mid', text: { zh: '技术能力提升了，但感觉天花板越来越近。', en: 'Technical skills improved, but the ceiling feels closer and closer.' }, effects: { skill: 15, network: -10 }, weight: 40 },
-        { id: 's2_promote_tip_left_bad', text: { zh: '公司重组，纯技术岗被合并，你的团队被打散了。', en: 'Company restructured. Pure tech roles merged. Your team was dissolved.' }, effects: { skill: 5, network: -15, safety: -10 }, weight: 25 },
+        { id: 's2_promote_tip_left_bad', text: { zh: '公司重组，纯技术岗被合并，你的团队被打散了。', en: 'Company restructured. Pure tech roles merged. Your team was dissolved.' }, effects: { network: -15, safety: -10 }, weight: 25 },
       ],
     },
     rightChoice: {
@@ -798,6 +982,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'office',
   },
   {
     id: 's2_hr_relocation',
@@ -822,6 +1007,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'office',
   },
   {
     id: 's2_boss_budget_cut',
@@ -846,6 +1032,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'office',
   },
   {
     id: 's2_colleague_invest_ai',
@@ -870,6 +1057,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'universal',
   },
   {
     id: 's2_ai_workflow_automation',
@@ -881,7 +1069,7 @@ const stage2Generic: SwipeCard[] = [
       outcomes: [
         { id: 's2_ai_workflow_left_good', text: { zh: '你坚持手动操作，意外发现了自动化工具的严重bug，老板对你刮目相看。', en: 'By doing things manually, you caught a critical bug in the automation tool. Boss is impressed.' }, effects: { safety: 10, skill: 15, network: 5 }, weight: 35 },
         { id: 's2_ai_workflow_left_mid', text: { zh: '手动工作效率虽低，但你对流程的理解比谁都深。', en: 'Manual work is slower, but your process understanding is deeper than anyone else\'s.' }, effects: { safety: -5, skill: 10 }, weight: 40 },
-        { id: 's2_ai_workflow_left_bad', text: { zh: '同事们早早下班，你还在手动处理数据，老板开始质疑你的效率。', en: 'Colleagues leave early while you\'re still processing data manually. Boss questions your efficiency.' }, effects: { safety: -15, skill: 5, finance: -10 }, weight: 25 },
+        { id: 's2_ai_workflow_left_bad', text: { zh: '同事们早早下班，你还在手动处理数据，老板开始质疑你的效率。', en: 'Colleagues leave early while you\'re still processing data manually. Boss questions your efficiency.' }, effects: { safety: -15, finance: -10 }, weight: 25 },
       ],
     },
     rightChoice: {
@@ -894,6 +1082,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'universal',
   },
   {
     id: 's2_headhunter_overseas',
@@ -918,6 +1107,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'universal',
   },
   {
     id: 's2_boss_ai_ethics',
@@ -942,6 +1132,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'office',
   },
   {
     id: 's2_colleague_burnout',
@@ -966,6 +1157,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'universal',
   },
   {
     id: 's2_senior_financial_plan',
@@ -990,6 +1182,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'universal',
   },
   // Career-specific: programmer
   {
@@ -1002,19 +1195,20 @@ const stage2Generic: SwipeCard[] = [
       outcomes: [
         { id: 's2_ai_code_left_good', text: { zh: '你对底层原理的理解让你成了团队中不可替代的人。', en: 'Your deep understanding of fundamentals made you irreplaceable on the team.' }, effects: { skill: 15, network: 10 }, weight: 35, careerWeightModifiers: { programmer: 1.5 } },
         { id: 's2_ai_code_left_mid', text: { zh: '手写代码效率虽低，但质量还不错。', en: 'Manual coding was slower, but quality held up.' }, effects: { skill: 10, safety: -10 }, weight: 40 },
-        { id: 's2_ai_code_left_bad', text: { zh: '项目进度严重落后，老板对你很不满。', en: 'Project fell way behind schedule. Boss is very unhappy.' }, effects: { skill: 5, safety: -20, network: -10 }, weight: 25 },
+        { id: 's2_ai_code_left_bad', text: { zh: '项目进度严重落后，老板对你很不满。', en: 'Project fell way behind schedule. Boss is very unhappy.' }, effects: { safety: -20, network: -10 }, weight: 25 },
       ],
     },
     rightChoice: {
       label: { zh: '转向架构', en: 'Move to architecture' },
-      effects: { skill: 15, safety: -5 },
+      effects: { skill: 12, safety: -5 },
       outcomes: [
-        { id: 's2_ai_code_right_good', text: { zh: '你设计的架构被全公司采纳，AI 负责实现，效率翻倍！', en: 'Your architecture was adopted company-wide. AI handles implementation, doubling efficiency!' }, effects: { skill: 20, network: 10, finance: 10 }, weight: 35, careerWeightModifiers: { programmer: 1.5 } },
+        { id: 's2_ai_code_right_good', text: { zh: '你设计的架构被全公司采纳，AI 负责实现，效率翻倍！', en: 'Your architecture was adopted company-wide. AI handles implementation, doubling efficiency!' }, effects: { skill: 15, network: 10, finance: 10 }, weight: 35, careerWeightModifiers: { programmer: 1.5 } },
         { id: 's2_ai_code_right_mid', text: { zh: '架构转型还在适应中，学到了不少新东西。', en: 'Still adapting to the architecture role, but learning a lot.' }, effects: { skill: 15, safety: -5 }, weight: 40 },
-        { id: 's2_ai_code_right_bad', text: { zh: '架构设计失误，AI 生成的代码全是 bug，你背锅了。', en: 'Architecture design flaw. AI-generated code was full of bugs. You took the blame.' }, effects: { skill: 10, safety: -15, network: -10 }, weight: 25 },
+        { id: 's2_ai_code_right_bad', text: { zh: '架构设计失误，AI 生成的代码全是 bug，你背锅了。', en: 'Architecture design flaw. AI-generated code was full of bugs. You took the blame.' }, effects: { safety: -15, network: -10 }, weight: 25 },
       ],
     },
     stage: 2,
+    scene: 'office',
     careerIds: ['programmer'],
   },
   {
@@ -1040,7 +1234,84 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'office',
     careerIds: ['programmer'],
+  },
+  // Scene-generic: creative_studio (available to designer + content_creator)
+  {
+    id: 's2_ai_creative_pipeline',
+    character: 'ai',
+    text: { zh: 'AI 创作流水线正在取代传统创作流程，甲方开始直接用 AI 出初稿了。', en: 'AI creative pipelines are replacing traditional workflows. Clients are drafting with AI directly now.' },
+    leftChoice: {
+      label: { zh: '坚持手工', en: 'Stay handcrafted' },
+      effects: { skill: 8, safety: -15 },
+      outcomes: [
+        { id: 's2_creative_pipeline_left_good', text: { zh: '你的手工作品被业内誉为"匠人精神"，高端客户纷纷找上门。', en: 'Your handcrafted work earned the "artisan" label. Premium clients lined up.' }, effects: { skill: 15, network: 10, finance: 10 }, weight: 35 },
+        { id: 's2_creative_pipeline_left_mid', text: { zh: '坚持手工的活虽然慢，但每件作品都很有质感，勉强跟上市场节奏。', en: 'Handcrafted work was slower, but each piece had real substance. Barely keeping pace with the market.' }, effects: { skill: 8, safety: -15 }, weight: 40 },
+        { id: 's2_creative_pipeline_left_bad', text: { zh: '甲方嫌你出活太慢，把项目全转给了用 AI 的竞争对手。', en: 'Client got impatient with your pace and moved all projects to an AI-powered competitor.' }, effects: { safety: -20, finance: -15 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '融入流水线', en: 'Join the pipeline' },
+      effects: { finance: 10, skill: -10, safety: -5 },
+      outcomes: [
+        { id: 's2_creative_pipeline_right_good', text: { zh: '你把 AI 当工具、自己把控创意方向，效率和质量双赢！', en: 'You used AI as a tool while steering creative direction yourself. Efficiency and quality both soared!' }, effects: { finance: 15, skill: 10 }, weight: 35 },
+        { id: 's2_creative_pipeline_right_mid', text: { zh: '适应了流水线节奏，产出确实快了，但总觉得少了点什么。', en: 'Adapted to the pipeline pace. Output was faster, but something felt missing.' }, effects: { finance: 10, skill: -10 }, weight: 40 },
+        { id: 's2_creative_pipeline_right_bad', text: { zh: '完全依赖 AI 流水线后，你的个人风格消失了，甲方开始说"谁做都一样"。', en: 'Fully dependent on the AI pipeline, your personal style vanished. Clients started saying "anyone could do this."' }, effects: { skill: -15, safety: -15, network: -10 }, weight: 25 },
+      ],
+    },
+    stage: 2,
+    scene: 'creative_studio',
+  },
+  {
+    id: 's2_colleague_creative_burnout',
+    character: 'colleague',
+    text: { zh: '连续赶了三个项目，创意完全枯竭，看什么都觉得丑，怎么办？', en: 'Three projects back-to-back. Creative tank is empty. Everything you make looks ugly. What now?' },
+    leftChoice: {
+      label: { zh: '硬撑', en: 'Push through' },
+      effects: { skill: 5, safety: -15 },
+      outcomes: [
+        { id: 's2_creative_burnout_left_good', text: { zh: '硬撑过去后突然开窍了，交出了职业生涯最满意的作品！', en: 'Pushed through the block and had a breakthrough. Delivered the best work of your career!' }, effects: { skill: 15, safety: 5, network: 5 }, weight: 35 },
+        { id: 's2_creative_burnout_left_mid', text: { zh: '勉强交了差，质量一般，甲方没说什么但你自己不太满意。', en: 'Delivered something passable. Client didn\'t complain, but you weren\'t proud of it.' }, effects: { skill: 5, safety: -15 }, weight: 40 },
+        { id: 's2_creative_burnout_left_bad', text: { zh: '身体和精神双重崩溃，进了急诊，项目也被迫延期。', en: 'Physical and mental collapse. Ended up in the ER. Project got delayed anyway.' }, effects: { safety: -20, skill: -10, finance: -10 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '暂停休整', en: 'Take a break' },
+      effects: { safety: 15, skill: -10 },
+      outcomes: [
+        { id: 's2_creative_burnout_right_good', text: { zh: '休息了一周回来灵感爆发，一口气出了三个方案，甲方全都想要。', en: 'Came back after a week off and inspiration flooded in. Produced three concepts — client wanted all of them.' }, effects: { safety: 15, skill: 15 }, weight: 35 },
+        { id: 's2_creative_burnout_right_mid', text: { zh: '休息了几天，状态恢复了一些，虽然进度慢了但至少没崩。', en: 'Took a few days off. Recovery was partial, but at least you didn\'t crash.' }, effects: { safety: 15, skill: -10 }, weight: 40 },
+        { id: 's2_creative_burnout_right_bad', text: { zh: '休息期间甲方等不了找了别人，你回来发现项目没了。', en: 'Client couldn\'t wait and hired someone else. You came back to find the project gone.' }, effects: { safety: 5, finance: -15, network: -10 }, weight: 25 },
+      ],
+    },
+    stage: 2,
+    scene: 'creative_studio',
+  },
+  {
+    id: 's2_headhunter_agency_offer',
+    character: 'headhunter',
+    text: { zh: '一家大型创意机构找到你，开出了两倍薪水，但要求全职坐班、不能接私活。', en: 'A major creative agency offers double your salary. Catch: full-time in-office, no freelancing allowed.' },
+    leftChoice: {
+      label: { zh: '不去', en: 'Decline' },
+      effects: { safety: 10 },
+      outcomes: [
+        { id: 's2_agency_offer_left_good', text: { zh: '留在自由职业赛道，后来接到了一个超大项目，收入反而比坐班还高。', en: 'Stayed freelance. Landed a massive project later that paid more than the agency gig.' }, effects: { safety: 15, finance: 15, skill: 5 }, weight: 35 },
+        { id: 's2_agency_offer_left_mid', text: { zh: '维持现状，收入稳定但没什么突破，偶尔会想象坐班的生活。', en: 'Status quo. Stable income, no breakthroughs. Occasionally wondered what the office life would be like.' }, effects: { safety: 10 }, weight: 40 },
+        { id: 's2_agency_offer_left_bad', text: { zh: '市场突然变冷，自由职业项目锐减，有点后悔没去拿那份稳定薪水。', en: 'Market suddenly cooled. Freelance gigs dried up. Started regretting not taking that steady paycheck.' }, effects: { safety: -10, finance: -15 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '加入', en: 'Join' },
+      effects: { finance: 15, network: 10, safety: -10 },
+      outcomes: [
+        { id: 's2_agency_offer_right_good', text: { zh: '进了大厂接触到顶级资源和客户，一年内就被提拔为创意总监。', en: 'Joined the agency. Accessed top-tier resources and clients. Promoted to creative director within a year.' }, effects: { finance: 20, network: 15, skill: 10 }, weight: 35 },
+        { id: 's2_agency_offer_right_mid', text: { zh: '薪水确实高了，但每天加班到九点，周末也常常被叫回去改方案。', en: 'Pay was great, but you worked until 9pm daily. Weekends were often spent revising briefs.' }, effects: { finance: 15, network: 10, safety: -10 }, weight: 40 },
+        { id: 's2_agency_offer_right_bad', text: { zh: '大机构内部政治复杂，你的创意总被层层审批砍得面目全非，想辞职了。', en: 'Agency politics were brutal. Your creative ideas got butchered by layers of approval. You wanted to quit.' }, effects: { safety: -20, skill: -10, network: -5 }, weight: 25 },
+      ],
+    },
+    stage: 2,
+    scene: 'creative_studio',
   },
   // Career-specific: designer
   {
@@ -1066,6 +1337,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'creative_studio',
     careerIds: ['designer'],
   },
   {
@@ -1083,7 +1355,7 @@ const stage2Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '开干', en: 'Let\'s go' },
-      effects: { finance: -15, skill: 15, network: 10 },
+      effects: { finance: -15, skill: 12, network: 10 },
       outcomes: [
         { id: 's2_design_agency_right_good', text: { zh: '工作室第一年就盈利了，还拿了设计大奖！', en: 'Studio turned profit in year one and won a design award!' }, effects: { finance: 20, skill: 15, network: 15 }, weight: 35, careerWeightModifiers: { designer: 1.5 } },
         { id: 's2_design_agency_right_mid', text: { zh: '工作室还在摸索阶段，收入不稳定但学到很多。', en: 'Studio is still finding its footing. Income unstable but learning a lot.' }, effects: { finance: -10, skill: 15, network: 10 }, weight: 40 },
@@ -1091,7 +1363,84 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'creative_studio',
     careerIds: ['designer'],
+  },
+  // School scene: general (no careerIds)
+  {
+    id: 's2_boss_school_ranking',
+    character: 'boss',
+    text: { zh: '学校排名从区里前三跌到前十开外，校长开了紧急会议："各位，再这样下去大家年终都别想了。"', en: 'School rankings fell from top 3 to outside the top 10. The principal called an emergency meeting: "If this continues, forget about year-end bonuses."' },
+    leftChoice: {
+      label: { zh: '按部就班', en: 'Stay the course' },
+      effects: { safety: -10 },
+      outcomes: [
+        { id: 's2_ranking_left_good', text: { zh: '你坚持教学理念，学生素质反而获得了家长好评，口碑逆袭。', en: 'You stuck to your principles. Parents praised student quality. Reputation rebounded.' }, effects: { safety: 10, network: 10 }, weight: 35 },
+        { id: 's2_ranking_left_mid', text: { zh: '排名没变化，校长有点不满但没追究。', en: 'Rankings didn\'t budge. Principal is unhappy but didn\'t push it.' }, effects: { safety: -10 }, weight: 40 },
+        { id: 's2_ranking_left_bad', text: { zh: '年终考核垫底，被安排去带最差的班级。', en: 'Ranked last in annual review. Assigned to the worst class.' }, effects: { safety: -15, network: -10 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '加码冲刺', en: 'Push harder' },
+      effects: { skill: 10, safety: -15 },
+      outcomes: [
+        { id: 's2_ranking_right_good', text: { zh: '你的班级成绩飙升，校长在全校大会上点名表扬你！', en: 'Your class scores skyrocketed. The principal praised you by name at the school assembly!' }, effects: { skill: 15, network: 15, safety: 10 }, weight: 35 },
+        { id: 's2_ranking_right_mid', text: { zh: '成绩有所提升，但你和学生都累得够呛。', en: 'Grades went up, but both you and the students are exhausted.' }, effects: { skill: 10, safety: -10 }, weight: 40 },
+        { id: 's2_ranking_right_bad', text: { zh: '高强度教学引发学生抵触情绪，有人写匿名信投诉你。', en: 'The intense pace triggered student pushback. Someone filed an anonymous complaint.' }, effects: { safety: -20, network: -10 }, weight: 25 },
+      ],
+    },
+    stage: 2,
+    scene: 'school',
+  },
+  {
+    id: 's2_ai_grading_system',
+    character: 'ai',
+    text: { zh: '学校宣布 AI 自动批改系统全校强制上线，以后作文和主观题都交给机器打分了。', en: 'The school announces a mandatory AI auto-grading system. From now on, essays and subjective answers will be scored by machines.' },
+    leftChoice: {
+      label: { zh: '抵制', en: 'Resist' },
+      effects: { safety: -10, skill: 5 },
+      outcomes: [
+        { id: 's2_grading_left_good', text: { zh: 'AI 系统出了大 bug，把全年级作文打了零分，你成了"有远见的人"。', en: 'The AI system had a massive bug — gave the entire grade zeroes on essays. You became "the one who saw it coming."' }, effects: { safety: 10, network: 10, skill: 5 }, weight: 35 },
+        { id: 's2_grading_left_mid', text: { zh: '大家都用了就你不用，校长找你"谈心"了。', en: 'Everyone adopted it except you. The principal had a "heart-to-heart" with you.' }, effects: { safety: -10, skill: 5 }, weight: 40 },
+        { id: 's2_grading_left_bad', text: { zh: '被扣上"抗拒技术进步"的帽子，学校通报批评。', en: 'Labeled as "resisting technological progress." Got a formal reprimand.' }, effects: { safety: -15, network: -10 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '配合', en: 'Cooperate' },
+      effects: { skill: 10, safety: -5 },
+      outcomes: [
+        { id: 's2_grading_right_good', text: { zh: '你用 AI 批改省下的时间做了个性化辅导，学生成绩大幅提升！', en: 'You used the time saved by AI grading for personalized tutoring. Student scores jumped dramatically!' }, effects: { skill: 15, network: 10 }, weight: 35 },
+        { id: 's2_grading_right_mid', text: { zh: '系统还行，但偶尔抽风，你得花时间复查。', en: 'The system works okay, but glitches sometimes. You spend time double-checking.' }, effects: { skill: 10, safety: -5 }, weight: 40 },
+        { id: 's2_grading_right_bad', text: { zh: 'AI 把一篇优秀作文打了不及格，家长投诉到教育局，你背了锅。', en: 'The AI flunked an excellent essay. Parents complained to the education bureau. You took the blame.' }, effects: { safety: -15, network: -10 }, weight: 25 },
+      ],
+    },
+    stage: 2,
+    scene: 'school',
+  },
+  {
+    id: 's2_hr_tutoring_regulation',
+    character: 'hr',
+    text: { zh: '教育局发了红头文件：全面禁止在职教师课外有偿辅导，违者开除。你之前一直在周末给学生补课赚外快。', en: 'The Ministry issued a red-letter decree: all paid after-school tutoring by active teachers is banned. Violators will be fired. You\'ve been earning extra cash tutoring on weekends.' },
+    leftChoice: {
+      label: { zh: '遵守', en: 'Comply' },
+      effects: { safety: 10, finance: -15 },
+      outcomes: [
+        { id: 's2_tutoring_left_good', text: { zh: '你把精力转向校内教研，发表的论文获奖了，升职加薪！', en: 'You redirected your energy to in-school research. Your paper won an award — promotion and raise!' }, effects: { safety: 15, skill: 15, finance: 10 }, weight: 35 },
+        { id: 's2_tutoring_left_mid', text: { zh: '收入少了一大截，但至少工作稳定。', en: 'Income took a big hit, but at least your job is secure.' }, effects: { safety: 10, finance: -15 }, weight: 40 },
+        { id: 's2_tutoring_left_bad', text: { zh: '房贷压力变大了，生活质量明显下降。', en: 'Mortgage pressure increased. Quality of life noticeably dropped.' }, effects: { finance: -20, safety: 5 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '私下继续', en: 'Continue secretly' },
+      effects: { finance: 15, safety: -20 },
+      outcomes: [
+        { id: 's2_tutoring_right_good', text: { zh: '家长们守口如瓶，你的外快照拿不误。', en: 'Parents kept quiet. Your side income continued uninterrupted.' }, effects: { finance: 20, network: 5 }, weight: 35 },
+        { id: 's2_tutoring_right_mid', text: { zh: '提心吊胆地继续补课，每次都怕被举报。', en: 'You kept tutoring nervously, fearing a report every session.' }, effects: { finance: 15, safety: -15 }, weight: 40 },
+        { id: 's2_tutoring_right_bad', text: { zh: '被学生家长的"前任"举报了，面临停职调查。', en: 'A disgruntled ex-parent reported you. Now facing suspension and investigation.' }, effects: { safety: -25, finance: -20, network: -10 }, weight: 25 },
+      ],
+    },
+    stage: 2,
+    scene: 'school',
   },
   // Career-specific: teacher
   {
@@ -1109,14 +1458,15 @@ const stage2Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '融入教学', en: 'Integrate AI' },
-      effects: { skill: 15, safety: -5 },
+      effects: { skill: 12, safety: -5 },
       outcomes: [
-        { id: 's2_ai_tutor_right_good', text: { zh: '你的 AI 辅助教学班成绩全校第一，教育局来观摩！', en: 'Your AI-assisted class ranked #1 in school. Education bureau came to observe!' }, effects: { skill: 20, network: 15 }, weight: 35, careerWeightModifiers: { teacher: 1.5 } },
+        { id: 's2_ai_tutor_right_good', text: { zh: '你的 AI 辅助教学班成绩全校第一，教育局来观摩！', en: 'Your AI-assisted class ranked #1 in school. Education bureau came to observe!' }, effects: { skill: 15, network: 15 }, weight: 35, careerWeightModifiers: { teacher: 1.5 } },
         { id: 's2_ai_tutor_right_mid', text: { zh: '学生成绩有所提升，但适应期比想象中长。', en: 'Student grades improved, but the adjustment period was longer than expected.' }, effects: { skill: 15, safety: -5 }, weight: 40 },
-        { id: 's2_ai_tutor_right_bad', text: { zh: '学生过度依赖 AI 辅导，独立思考能力下降了。', en: 'Students became over-reliant on AI tutoring. Independent thinking declined.' }, effects: { skill: 10, safety: -15, network: -10 }, weight: 25 },
+        { id: 's2_ai_tutor_right_bad', text: { zh: '学生过度依赖 AI 辅导，独立思考能力下降了。', en: 'Students became over-reliant on AI tutoring. Independent thinking declined.' }, effects: { safety: -15, network: -10 }, weight: 25 },
       ],
     },
     stage: 2,
+    scene: 'school',
     careerIds: ['teacher'],
   },
   {
@@ -1142,7 +1492,84 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'school',
     careerIds: ['teacher'],
+  },
+  // Scene-specific: hospital (available to all careers with hospital scene)
+  {
+    id: 's2_boss_patient_overload',
+    character: 'boss',
+    text: { zh: '门诊量翻倍，院长要求全部接诊，走廊里都站满了人。', en: '"Outpatient volume doubled. Director demands you see every single patient. The hallway is packed."' },
+    leftChoice: {
+      label: { zh: '控制号源', en: 'Limit appointments' },
+      effects: { safety: 10, network: -10 },
+      outcomes: [
+        { id: 's2_overload_left_good', text: { zh: '控制接诊量后诊疗质量反而提高了，患者好评率飙升。', en: 'Limiting volume improved care quality. Patient satisfaction ratings soared.' }, effects: { safety: 15, skill: 8 }, weight: 35 },
+        { id: 's2_overload_left_mid', text: { zh: '院长不太高兴但没说什么，你至少不用通宵加班了。', en: 'Director wasn\'t thrilled but said nothing. At least you stopped pulling all-nighters.' }, effects: { safety: 10, network: -10 }, weight: 40 },
+        { id: 's2_overload_left_bad', text: { zh: '院长当众批评你"不能吃苦"，年终绩效直接降了一档。', en: 'Director publicly called you out for "lacking grit." Annual bonus dropped a tier.' }, effects: { safety: -5, network: -15, finance: -10 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '全部接诊', en: 'See everyone' },
+      effects: { network: 10, safety: -15, finance: 10 },
+      outcomes: [
+        { id: 's2_overload_right_good', text: { zh: '连续高强度接诊三个月后被评为"最美医生"，奖金翻倍。', en: 'After three brutal months of nonstop patients, you won "Most Dedicated Doctor." Bonus doubled.' }, effects: { network: 15, finance: 15, safety: -10 }, weight: 35 },
+        { id: 's2_overload_right_mid', text: { zh: '撑下来了，但每天下班后只想瘫在沙发上刷短视频。', en: 'You survived, but every evening you just collapsed on the couch doomscrolling short videos.' }, effects: { network: 10, safety: -15, finance: 10 }, weight: 40 },
+        { id: 's2_overload_right_bad', text: { zh: '过劳导致误诊了一个病人，差点被医闹，身心俱疲。', en: 'Overwork led to a misdiagnosis. Nearly faced a medical dispute. Burned out completely.' }, effects: { safety: -20, network: -10, finance: 10 }, weight: 25 },
+      ],
+    },
+    stage: 2,
+    scene: 'hospital',
+  },
+  {
+    id: 's2_hr_hospital_merger',
+    character: 'hr',
+    text: { zh: '医院合并重组，你可以选择去新科室，也可以留在原地。新科室据说设备一流。', en: '"Hospital merger underway. You can transfer to the new department — reportedly top-notch equipment — or stay put."' },
+    leftChoice: {
+      label: { zh: '留原科', en: 'Stay in current dept' },
+      effects: { safety: 10 },
+      outcomes: [
+        { id: 's2_merger_left_good', text: { zh: '原科室因为合并获得了更多资源，你成了元老级人物。', en: 'Your old department got more resources from the merger. You became the veteran everyone respects.' }, effects: { safety: 15, network: 8 }, weight: 35 },
+        { id: 's2_merger_left_mid', text: { zh: '原地不动，日子平稳，就是偶尔羡慕新科室的咖啡机。', en: 'Stayed put. Life was stable. Just occasionally envied the new department\'s espresso machine.' }, effects: { safety: 10 }, weight: 40 },
+        { id: 's2_merger_left_bad', text: { zh: '原科室在合并中被边缘化了，你的晋升通道越来越窄。', en: 'Your department got sidelined in the merger. Promotion paths narrowed significantly.' }, effects: { safety: -5, network: -10 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '去新科', en: 'Transfer' },
+      effects: { skill: 12, network: -10, safety: -5 },
+      outcomes: [
+        { id: 's2_merger_right_good', text: { zh: '新科室果然实力强劲，你跟着大佬学到了很多硬核技术。', en: 'New department lived up to the hype. You learned cutting-edge techniques from top mentors.' }, effects: { skill: 15, network: 5 }, weight: 35 },
+        { id: 's2_merger_right_mid', text: { zh: '新环境适应了一阵子，同事关系从零开始，但总算站稳了脚跟。', en: 'Took a while to adjust. Built relationships from scratch, but eventually found your footing.' }, effects: { skill: 12, network: -10, safety: -5 }, weight: 40 },
+        { id: 's2_merger_right_bad', text: { zh: '新科室内部派系复杂，你作为外来户处处受排挤。', en: 'New department was riddled with internal factions. As the outsider, you got squeezed at every turn.' }, effects: { safety: -15, network: -15 }, weight: 25 },
+      ],
+    },
+    stage: 2,
+    scene: 'hospital',
+  },
+  {
+    id: 's2_ai_drug_interaction',
+    character: 'ai',
+    text: { zh: 'AI 药物交互检测系统上线了，据说能发现人工很难察觉的用药冲突。', en: '"AI drug interaction detection system launched. Supposedly catches conflicts humans easily miss."' },
+    leftChoice: {
+      label: { zh: '持观望', en: 'Wait and see' },
+      effects: { safety: -5 },
+      outcomes: [
+        { id: 's2_drug_ai_left_good', text: { zh: '系统初期 bug 不少，早期用户叫苦连天，你暗自庆幸没跟风。', en: 'System had plenty of early bugs. Early adopters cursed it. You quietly celebrated your caution.' }, effects: { safety: 10 }, weight: 35 },
+        { id: 's2_drug_ai_left_mid', text: { zh: '观望了一阵，也没什么大事发生，就是感觉落后同事半步。', en: 'Waited a while. Nothing dramatic happened. Just felt half a step behind your colleagues.' }, effects: { safety: -5 }, weight: 40 },
+        { id: 's2_drug_ai_left_bad', text: { zh: '你没用系统，漏掉了一例药物冲突，幸好护士挡了一道。', en: 'Without the system, you missed a drug interaction. Thankfully, a nurse caught it in time.' }, effects: { safety: -15, skill: -5 }, weight: 25 },
+      ],
+    },
+    rightChoice: {
+      label: { zh: '率先使用', en: 'Be an early adopter' },
+      effects: { skill: 12, safety: -5 },
+      outcomes: [
+        { id: 's2_drug_ai_right_good', text: { zh: '系统帮你拦住了一例罕见药物冲突，科室对你刮目相看。', en: 'System caught a rare drug conflict for you. The whole department looked at you with new respect.' }, effects: { skill: 15, network: 10, safety: 5 }, weight: 35 },
+        { id: 's2_drug_ai_right_mid', text: { zh: '系统还行，偶尔误报让你多花了些时间核实，但总体有帮助。', en: 'System was decent. Occasional false alarms cost you extra verification time, but overall helpful.' }, effects: { skill: 12, safety: -5 }, weight: 40 },
+        { id: 's2_drug_ai_right_bad', text: { zh: '系统崩溃导致当天用药记录全丢了，你手忙脚乱重新核对到凌晨。', en: 'System crashed and wiped the day\'s medication records. You frantically re-verified everything until dawn.' }, effects: { skill: 5, safety: -15 }, weight: 25 },
+      ],
+    },
+    stage: 2,
+    scene: 'hospital',
   },
   // Career-specific: doctor
   {
@@ -1160,14 +1587,15 @@ const stage2Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '学习 AI 医疗', en: 'Learn AI medicine' },
-      effects: { skill: 15, finance: -10 },
+      effects: { skill: 12, finance: -10 },
       outcomes: [
-        { id: 's2_radiology_right_good', text: { zh: '你成了医院 AI 医疗的带头人，科研论文连发三篇！', en: 'You became the hospital\'s AI medicine leader. Published three research papers!' }, effects: { skill: 20, network: 15, finance: 10 }, weight: 35, careerWeightModifiers: { doctor: 1.5 } },
+        { id: 's2_radiology_right_good', text: { zh: '你成了医院 AI 医疗的带头人，科研论文连发三篇！', en: 'You became the hospital\'s AI medicine leader. Published three research papers!' }, effects: { skill: 15, network: 15, finance: 10 }, weight: 35, careerWeightModifiers: { doctor: 1.5 } },
         { id: 's2_radiology_right_mid', text: { zh: '学了不少 AI 知识，临床应用还在摸索。', en: 'Learned a lot about AI. Clinical application still in progress.' }, effects: { skill: 15, finance: -10 }, weight: 40 },
-        { id: 's2_radiology_right_bad', text: { zh: '花了大量时间学 AI，本职医疗工作反而落下了。', en: 'Spent too much time on AI studies. Core medical work suffered.' }, effects: { skill: 10, safety: -15, finance: -15 }, weight: 25 },
+        { id: 's2_radiology_right_bad', text: { zh: '花了大量时间学 AI，本职医疗工作反而落下了。', en: 'Spent too much time on AI studies. Core medical work suffered.' }, effects: { safety: -15, finance: -15 }, weight: 25 },
       ],
     },
     stage: 2,
+    scene: 'hospital',
     careerIds: ['doctor'],
   },
   {
@@ -1193,6 +1621,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'hospital',
     careerIds: ['doctor'],
   },
   // Career-specific: content_creator
@@ -1219,6 +1648,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'creative_studio',
     careerIds: ['content_creator'],
   },
   {
@@ -1244,6 +1674,7 @@ const stage2Generic: SwipeCard[] = [
       ],
     },
     stage: 2,
+    scene: 'creative_studio',
     careerIds: ['content_creator'],
   },
 ];
@@ -1272,12 +1703,13 @@ const stage3Generic: SwipeCard[] = [
       label: { zh: '争取转岗', en: 'Fight for transfer' },
       effects: { safety: -10, network: -15, skill: 15 },
       outcomes: [
-        { id: 's3_mass_transfer_good', text: { zh: '成功转到了 AI 应用部门，成为技术骨干！', en: 'Transferred to AI applications team. Became a tech lead!' }, effects: { skill: 25, safety: 5, network: 10 }, weight: 30, careerWeightModifiers: { programmer: 1.5, doctor: 1.3 } },
+        { id: 's3_mass_transfer_good', text: { zh: '成功转到了 AI 应用部门，成为技术骨干！', en: 'Transferred to AI applications team. Became a tech lead!' }, effects: { skill: 18, safety: 5, network: 10 }, weight: 30, careerWeightModifiers: { programmer: 1.5, doctor: 1.3 } },
         { id: 's3_mass_transfer_mid', text: { zh: '转岗成功但岗位边缘化，前途未卜。', en: 'Transfer succeeded but role is marginal. Future uncertain.' }, effects: { safety: -10, network: -15, skill: 15 }, weight: 40 },
         { id: 's3_mass_transfer_bad', text: { zh: '争取了半天还是被裁了，还得罪了 HR。', en: 'Fought hard but still got laid off. And now HR is upset.' }, effects: { safety: -25, network: -20 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'office',
   },
   {
     id: 's3_ai_general_intelligence',
@@ -1294,14 +1726,15 @@ const stage3Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '寻找新方向', en: 'Find new path' },
-      effects: { skill: 20, safety: -10 },
+      effects: { skill: 15, safety: -10 },
       outcomes: [
-        { id: 's3_agi_right_good', text: { zh: '你找到了人机协作的新模式，成了 AGI 时代的先驱者，各大媒体都来采访你。', en: 'You pioneered a new human-AI collaboration model. Became an AGI-era thought leader. Media lined up for interviews.' }, effects: { skill: 25, network: 20, finance: 15 }, weight: 30 },
-        { id: 's3_agi_right_mid', text: { zh: '新方向有潜力但还在摸索中，至少比原地等待强。', en: 'New direction shows promise but still figuring it out. At least better than standing still.' }, effects: { skill: 20, safety: -10 }, weight: 40 },
+        { id: 's3_agi_right_good', text: { zh: '你找到了人机协作的新模式，成了 AGI 时代的先驱者，各大媒体都来采访你。', en: 'You pioneered a new human-AI collaboration model. Became an AGI-era thought leader. Media lined up for interviews.' }, effects: { skill: 18, network: 20, finance: 15 }, weight: 30 },
+        { id: 's3_agi_right_mid', text: { zh: '新方向有潜力但还在摸索中，至少比原地等待强。', en: 'New direction shows promise but still figuring it out. At least better than standing still.' }, effects: { skill: 18, safety: -10 }, weight: 40 },
         { id: 's3_agi_right_bad', text: { zh: '折腾了一圈发现新方向也被 AGI 碾压，精力和积蓄都耗尽了。', en: 'After all the effort, the new path got steamrolled by AGI too. Energy and savings depleted.' }, effects: { skill: -15, finance: -20, safety: -15 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'universal',
   },
   {
     id: 's3_headhunter_exec_role',
@@ -1326,6 +1759,7 @@ const stage3Generic: SwipeCard[] = [
       ],
     },
     stage: 3,
+    scene: 'universal',
   },
   {
     id: 's3_boss_final_pivot',
@@ -1342,14 +1776,15 @@ const stage3Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '全力以赴', en: 'Go all in' },
-      effects: { skill: 20, finance: -15, safety: -15 },
+      effects: { skill: 15, finance: -15, safety: -15 },
       outcomes: [
-        { id: 's3_final_pivot_right_good', text: { zh: '转型大获成功！你被提拔为新业务线负责人，公司股价翻了三倍。', en: 'Pivot was a smashing success! Promoted to head of new business line. Stock price tripled.' }, effects: { skill: 25, finance: 25, network: 15 }, weight: 30 },
-        { id: 's3_final_pivot_right_mid', text: { zh: '转型艰难推进中，累到脱相但学了一身新本事。', en: 'Pivot is grinding forward painfully. Exhausting but you picked up a whole set of new skills.' }, effects: { skill: 20, finance: -15, safety: -15 }, weight: 40 },
+        { id: 's3_final_pivot_right_good', text: { zh: '转型大获成功！你被提拔为新业务线负责人，公司股价翻了三倍。', en: 'Pivot was a smashing success! Promoted to head of new business line. Stock price tripled.' }, effects: { skill: 18, finance: 25, network: 15 }, weight: 30 },
+        { id: 's3_final_pivot_right_mid', text: { zh: '转型艰难推进中，累到脱相但学了一身新本事。', en: 'Pivot is grinding forward painfully. Exhausting but you picked up a whole set of new skills.' }, effects: { skill: 18, finance: -15, safety: -15 }, weight: 40 },
         { id: 's3_final_pivot_right_bad', text: { zh: '公司转型失败，全员裁撤，你不仅没了工作还倒贴了项目尾款。', en: 'Company pivot failed. Everyone laid off. You lost your job and had to cover project debts.' }, effects: { skill: -15, finance: -25, safety: -20 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'office',
   },
   {
     id: 's3_colleague_old_friend',
@@ -1374,6 +1809,7 @@ const stage3Generic: SwipeCard[] = [
       ],
     },
     stage: 3,
+    scene: 'universal',
   },
   {
     id: 's3_ai_universal_basic_income',
@@ -1392,12 +1828,13 @@ const stage3Generic: SwipeCard[] = [
       label: { zh: '提前布局', en: 'Plan ahead' },
       effects: { finance: 15, skill: 15, safety: -10 },
       outcomes: [
-        { id: 's3_ubi_right_good', text: { zh: '你提前布局了 AI 时代的新技能和投资组合，UBI 来了你也不需要了。', en: "You positioned yourself with new AI-era skills and investments. When UBI arrived, you didn't even need it." }, effects: { finance: 25, skill: 20 }, weight: 35 },
+        { id: 's3_ubi_right_good', text: { zh: '你提前布局了 AI 时代的新技能和投资组合，UBI 来了你也不需要了。', en: "You positioned yourself with new AI-era skills and investments. When UBI arrived, you didn't even need it." }, effects: { finance: 25, skill: 18 }, weight: 35 },
         { id: 's3_ubi_right_mid', text: { zh: '布局方向大致对了，但花了不少钱和精力，成效还需要时间验证。', en: 'General direction was right but cost a lot of money and energy. Results yet to be proven.' }, effects: { finance: 15, skill: 15, safety: -10 }, weight: 40 },
         { id: 's3_ubi_right_bad', text: { zh: '你判断错了方向，投入的积蓄全打水漂，UBI 也迟迟没来。', en: 'You bet on the wrong direction. Savings wasted, and UBI never materialized.' }, effects: { finance: -25, skill: -15, safety: -15 }, weight: 25 },
       ],
     },
     stage: 3,
+    scene: 'universal',
   },
   {
     id: 's3_hr_early_retirement',
@@ -1407,7 +1844,7 @@ const stage3Generic: SwipeCard[] = [
       label: { zh: '留下', en: 'Stay' },
       effects: { safety: -15, skill: 10 },
       outcomes: [
-        { id: 's3_retirement_left_good', text: { zh: '留下的人太少，你反而成了稀缺资源，连升两级。', en: 'So few stayed that you became a scarce resource. Got promoted twice.' }, effects: { safety: 15, skill: 20, finance: 15 }, weight: 30 },
+        { id: 's3_retirement_left_good', text: { zh: '留下的人太少，你反而成了稀缺资源，连升两级。', en: 'So few stayed that you became a scarce resource. Got promoted twice.' }, effects: { safety: 15, skill: 18, finance: 15 }, weight: 30 },
         { id: 's3_retirement_left_mid', text: { zh: '坚持留下了，工作量翻倍但至少还有收入和归属感。', en: 'Stuck it out. Workload doubled but at least you still have income and belonging.' }, effects: { safety: -15, skill: 10 }, weight: 40 },
         { id: 's3_retirement_left_bad', text: { zh: '三个月后公司还是倒了，这次连补偿方案都没有了。', en: 'Company folded three months later anyway. This time there was no severance package.' }, effects: { safety: -25, finance: -20 }, weight: 30 },
       ],
@@ -1422,6 +1859,7 @@ const stage3Generic: SwipeCard[] = [
       ],
     },
     stage: 3,
+    scene: 'universal',
   },
   {
     id: 's3_senior_life_meaning',
@@ -1440,12 +1878,13 @@ const stage3Generic: SwipeCard[] = [
       label: { zh: '寻找意义', en: 'Find meaning' },
       effects: { network: 15, skill: 15, finance: -15 },
       outcomes: [
-        { id: 's3_meaning_right_good', text: { zh: '你创办了一个"人类价值"社区，聚集了一群志同道合的人，反而找到了新的事业方向。', en: 'You started a "Human Value" community. Found kindred spirits and a brand new career direction.' }, effects: { network: 25, skill: 20, finance: 15 }, weight: 30 },
+        { id: 's3_meaning_right_good', text: { zh: '你创办了一个"人类价值"社区，聚集了一群志同道合的人，反而找到了新的事业方向。', en: 'You started a "Human Value" community. Found kindred spirits and a brand new career direction.' }, effects: { network: 25, skill: 18, finance: 15 }, weight: 30 },
         { id: 's3_meaning_right_mid', text: { zh: '意义这东西想了很久也没完全想通，但心态平和了不少。', en: "Still haven't fully figured out the meaning of life, but your mindset is much more at peace." }, effects: { network: 15, skill: 15, finance: -15 }, weight: 40 },
         { id: 's3_meaning_right_bad', text: { zh: '追寻意义的过程中耗尽了积蓄，家人也不理解你为什么放弃高薪工作。', en: "Burned through savings searching for meaning. Family couldn't understand why you gave up a high-paying job." }, effects: { finance: -25, network: -15, safety: -15 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'universal',
   },
   {
     id: 's3_boss_train_ai_replacement',
@@ -1464,12 +1903,13 @@ const stage3Generic: SwipeCard[] = [
       label: { zh: '接受', en: 'Accept' },
       effects: { finance: 20, safety: -15, skill: -15 },
       outcomes: [
-        { id: 's3_train_ai_right_good', text: { zh: '训练 AI 的过程中你掌握了核心技术，转型成为 AI 训练师，收入反而更高了。', en: 'While training the AI, you mastered the core technology. Pivoted to AI trainer role with higher pay.' }, effects: { finance: 25, skill: 20 }, weight: 30 },
+        { id: 's3_train_ai_right_good', text: { zh: '训练 AI 的过程中你掌握了核心技术，转型成为 AI 训练师，收入反而更高了。', en: 'While training the AI, you mastered the core technology. Pivoted to AI trainer role with higher pay.' }, effects: { finance: 25, skill: 18 }, weight: 30 },
         { id: 's3_train_ai_right_mid', text: { zh: '完成了交接，拿了一笔补偿金，心里五味杂陈。', en: 'Finished the handover. Got a payout. Mixed feelings about the whole thing.' }, effects: { finance: 20, safety: -15, skill: -15 }, weight: 40 },
         { id: 's3_train_ai_right_bad', text: { zh: 'AI 上线后你当天就被裁了，承诺的补偿金也只给了一半。', en: 'The moment AI went live, you were let go. The promised severance was cut in half.' }, effects: { finance: -15, safety: -25, skill: -20 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'universal',
   },
   {
     id: 's3_headhunter_consulting',
@@ -1494,6 +1934,7 @@ const stage3Generic: SwipeCard[] = [
       ],
     },
     stage: 3,
+    scene: 'universal',
   },
   {
     id: 's3_ai_robot_coworker',
@@ -1512,12 +1953,13 @@ const stage3Generic: SwipeCard[] = [
       label: { zh: '合作', en: 'Cooperate' },
       effects: { skill: 15, safety: -10 },
       outcomes: [
-        { id: 's3_robot_right_good', text: { zh: '你和AI搭档默契十足，效率翻倍，老板直接给你加薪！', en: 'You and the AI became an unstoppable duo. Productivity doubled and the boss gave you a raise!' }, effects: { skill: 20, finance: 20, safety: -10 }, weight: 30 },
+        { id: 's3_robot_right_good', text: { zh: '你和AI搭档默契十足，效率翻倍，老板直接给你加薪！', en: 'You and the AI became an unstoppable duo. Productivity doubled and the boss gave you a raise!' }, effects: { skill: 18, finance: 20, safety: -10 }, weight: 30 },
         { id: 's3_robot_right_mid', text: { zh: '合作还算顺利，学到了一些AI协作技巧。', en: 'Cooperation went okay. Picked up some useful AI collaboration skills.' }, effects: { skill: 15, safety: -10 }, weight: 40 },
-        { id: 's3_robot_right_bad', text: { zh: 'AI表现太好，老板开始觉得你多余了。', en: 'The AI performed so well that the boss started wondering if you were redundant.' }, effects: { skill: 15, safety: -25 }, weight: 30 },
+        { id: 's3_robot_right_bad', text: { zh: 'AI表现太好，老板开始觉得你多余了。', en: 'The AI performed so well that the boss started wondering if you were redundant.' }, effects: { safety: -25 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'universal',
   },
   {
     id: 's3_colleague_last_chance',
@@ -1542,6 +1984,7 @@ const stage3Generic: SwipeCard[] = [
       ],
     },
     stage: 3,
+    scene: 'universal',
   },
   {
     id: 's3_hr_retraining_fund',
@@ -1558,14 +2001,15 @@ const stage3Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '去读书', en: 'Go study' },
-      effects: { skill: 25, safety: -15, finance: -10 },
+      effects: { skill: 15, safety: -15, finance: -10 },
       outcomes: [
-        { id: 's3_retrain_right_good', text: { zh: '研究生毕业后直接被AI实验室高薪录取，人生开挂！', en: 'Got recruited by an AI lab right after graduating. Career took off like a rocket!' }, effects: { skill: 25, finance: 20, network: 15 }, weight: 30 },
-        { id: 's3_retrain_right_mid', text: { zh: '课程很有收获，回来后工作更得心应手了。', en: 'The coursework was rewarding. Came back sharper and more confident at work.' }, effects: { skill: 25, safety: -15, finance: -10 }, weight: 40 },
-        { id: 's3_retrain_right_bad', text: { zh: '读书期间公司重组，回来发现岗位已经没了。', en: 'While you were studying, the company restructured. Your position was gone when you returned.' }, effects: { skill: 20, safety: -25, finance: -20 }, weight: 30 },
+        { id: 's3_retrain_right_good', text: { zh: '研究生毕业后直接被AI实验室高薪录取，人生开挂！', en: 'Got recruited by an AI lab right after graduating. Career took off like a rocket!' }, effects: { skill: 18, finance: 20, network: 15 }, weight: 30 },
+        { id: 's3_retrain_right_mid', text: { zh: '课程很有收获，回来后工作更得心应手了。', en: 'The coursework was rewarding. Came back sharper and more confident at work.' }, effects: { skill: 18, safety: -15, finance: -10 }, weight: 40 },
+        { id: 's3_retrain_right_bad', text: { zh: '读书期间公司重组，回来发现岗位已经没了。', en: 'While you were studying, the company restructured. Your position was gone when you returned.' }, effects: { safety: -25, finance: -20 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'universal',
   },
   {
     id: 's3_boss_last_project',
@@ -1582,14 +2026,15 @@ const stage3Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '最后一搏', en: 'One last shot' },
-      effects: { skill: 20, finance: 15, safety: -25 },
+      effects: { skill: 15, finance: 15, safety: -25 },
       outcomes: [
-        { id: 's3_lastproj_right_good', text: { zh: '项目大获成功！你的名字被刻在公司荣誉墙上，传奇谢幕。', en: 'The project was a massive success! Your name went on the company hall of fame. A legendary finale.' }, effects: { skill: 25, finance: 25, network: 20 }, weight: 30 },
-        { id: 's3_lastproj_right_mid', text: { zh: '项目勉强交付，累得够呛，但至少没留遗憾。', en: 'Project barely shipped. Exhausting, but at least no regrets.' }, effects: { skill: 20, finance: 15, safety: -25 }, weight: 40 },
+        { id: 's3_lastproj_right_good', text: { zh: '项目大获成功！你的名字被刻在公司荣誉墙上，传奇谢幕。', en: 'The project was a massive success! Your name went on the company hall of fame. A legendary finale.' }, effects: { skill: 18, finance: 25, network: 20 }, weight: 30 },
+        { id: 's3_lastproj_right_mid', text: { zh: '项目勉强交付，累得够呛，但至少没留遗憾。', en: 'Project barely shipped. Exhausting, but at least no regrets.' }, effects: { skill: 18, finance: 15, safety: -25 }, weight: 40 },
         { id: 's3_lastproj_right_bad', text: { zh: '项目烂尾了，最后一战成了职业生涯的污点。', en: 'The project fell apart. Your last stand became a career stain.' }, effects: { skill: -15, finance: -15, safety: -25, network: -15 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'universal',
   },
   {
     id: 's3_ai_sentient_debate',
@@ -1606,14 +2051,15 @@ const stage3Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '深入研究', en: 'Research it' },
-      effects: { skill: 20, network: 10, safety: -10 },
+      effects: { skill: 15, network: 10, safety: -10 },
       outcomes: [
-        { id: 's3_sentient_right_good', text: { zh: '你的研究报告被权威期刊收录，成了AI伦理领域的新星！', en: 'Your research paper got published in a top journal. You became a rising star in AI ethics!' }, effects: { skill: 25, network: 20, finance: 15 }, weight: 30 },
-        { id: 's3_sentient_right_mid', text: { zh: '研究过程中认识了很多志同道合的人，视野开阔了不少。', en: 'Met many like-minded people during your research. Your perspective broadened significantly.' }, effects: { skill: 20, network: 10, safety: -10 }, weight: 40 },
-        { id: 's3_sentient_right_bad', text: { zh: '研究结论引发争议，你在网上被人疯狂攻击。', en: 'Your research conclusions sparked controversy. You got dogpiled online.' }, effects: { skill: 15, network: -15, safety: -20 }, weight: 30 },
+        { id: 's3_sentient_right_good', text: { zh: '你的研究报告被权威期刊收录，成了AI伦理领域的新星！', en: 'Your research paper got published in a top journal. You became a rising star in AI ethics!' }, effects: { skill: 18, network: 20, finance: 15 }, weight: 30 },
+        { id: 's3_sentient_right_mid', text: { zh: '研究过程中认识了很多志同道合的人，视野开阔了不少。', en: 'Met many like-minded people during your research. Your perspective broadened significantly.' }, effects: { skill: 18, network: 10, safety: -10 }, weight: 40 },
+        { id: 's3_sentient_right_bad', text: { zh: '研究结论引发争议，你在网上被人疯狂攻击。', en: 'Your research conclusions sparked controversy. You got dogpiled online.' }, effects: { network: -15, safety: -20 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'universal',
   },
   // Career-specific: programmer
   {
@@ -1631,14 +2077,15 @@ const stage3Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '做底层', en: 'Go lower level' },
-      effects: { skill: 25, safety: -10 },
+      effects: { skill: 15, safety: -10 },
       outcomes: [
-        { id: 's3_no_code_right_good', text: { zh: '深耕底层架构，成为不可替代的基础设施专家！', en: 'Mastered low-level architecture. Became an irreplaceable infra expert!' }, effects: { skill: 25, safety: 15 }, weight: 30, careerWeightModifiers: { programmer: 1.5 } },
-        { id: 's3_no_code_right_mid', text: { zh: '底层开发确实更难被替代，但学习曲线很陡。', en: 'Harder to replace at the low level, but the learning curve is steep.' }, effects: { skill: 20, safety: -10 }, weight: 40 },
-        { id: 's3_no_code_right_bad', text: { zh: '底层需求越来越少，技术栈太小众找不到工作。', en: 'Low-level demand shrunk. Niche stack, hard to find jobs.' }, effects: { skill: 15, safety: -20, finance: -15 }, weight: 30 },
+        { id: 's3_no_code_right_good', text: { zh: '深耕底层架构，成为不可替代的基础设施专家！', en: 'Mastered low-level architecture. Became an irreplaceable infra expert!' }, effects: { skill: 18, safety: 15 }, weight: 30, careerWeightModifiers: { programmer: 1.5 } },
+        { id: 's3_no_code_right_mid', text: { zh: '底层开发确实更难被替代，但学习曲线很陡。', en: 'Harder to replace at the low level, but the learning curve is steep.' }, effects: { skill: 18, safety: -10 }, weight: 40 },
+        { id: 's3_no_code_right_bad', text: { zh: '底层需求越来越少，技术栈太小众找不到工作。', en: 'Low-level demand shrunk. Niche stack, hard to find jobs.' }, effects: { safety: -20, finance: -15 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'office',
     careerIds: ['programmer'],
   },
   {
@@ -1664,6 +2111,7 @@ const stage3Generic: SwipeCard[] = [
       ],
     },
     stage: 3,
+    scene: 'office',
     careerIds: ['programmer'],
   },
   // Career-specific: designer
@@ -1682,14 +2130,15 @@ const stage3Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '坚持创意', en: 'Stay creative' },
-      effects: { skill: 20, safety: -20 },
+      effects: { skill: 15, safety: -20 },
       outcomes: [
-        { id: 's3_design_obsolete_right_good', text: { zh: '坚持原创设计语言，反而成为稀缺人才，高薪邀约不断！', en: 'Your original design language became rare and coveted. Offers poured in!' }, effects: { skill: 25, finance: 20 }, weight: 30, careerWeightModifiers: { designer: 1.5 } },
-        { id: 's3_design_obsolete_right_mid', text: { zh: '创意作品小众但有口碑，勉强维持生计。', en: 'Niche creative work with a good reputation. Barely getting by.' }, effects: { skill: 20, safety: -15 }, weight: 40 },
+        { id: 's3_design_obsolete_right_good', text: { zh: '坚持原创设计语言，反而成为稀缺人才，高薪邀约不断！', en: 'Your original design language became rare and coveted. Offers poured in!' }, effects: { skill: 18, finance: 20 }, weight: 30, careerWeightModifiers: { designer: 1.5 } },
+        { id: 's3_design_obsolete_right_mid', text: { zh: '创意作品小众但有口碑，勉强维持生计。', en: 'Niche creative work with a good reputation. Barely getting by.' }, effects: { skill: 18, safety: -15 }, weight: 40 },
         { id: 's3_design_obsolete_right_bad', text: { zh: '市场已经不需要纯手工设计了，你被彻底淘汰。', en: 'The market no longer needs pure manual design. You\'re completely obsolete.' }, effects: { skill: -15, safety: -25, finance: -20 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'creative_studio',
     careerIds: ['designer'],
   },
   {
@@ -1709,12 +2158,13 @@ const stage3Generic: SwipeCard[] = [
       label: { zh: '留下', en: 'Stay' },
       effects: { skill: 15, safety: -15, network: -10 },
       outcomes: [
-        { id: 's3_design_dept_right_good', text: { zh: '成功转型 AI 部门设计负责人，带领团队开创新方向！', en: 'Became AI division design lead. Pioneered a new creative direction!' }, effects: { skill: 25, network: 15 }, weight: 30, careerWeightModifiers: { designer: 1.5 } },
+        { id: 's3_design_dept_right_good', text: { zh: '成功转型 AI 部门设计负责人，带领团队开创新方向！', en: 'Became AI division design lead. Pioneered a new creative direction!' }, effects: { skill: 18, network: 15 }, weight: 30, careerWeightModifiers: { designer: 1.5 } },
         { id: 's3_design_dept_right_mid', text: { zh: '虽然适应了新部门，但总觉得少了点什么。', en: 'Adapted to the new department, but something feels missing.' }, effects: { skill: 15, safety: -10 }, weight: 40 },
         { id: 's3_design_dept_right_bad', text: { zh: 'AI 部门根本不重视设计，你沦为配角。', en: 'AI division doesn\'t value design. You became a supporting role.' }, effects: { skill: -15, safety: -20, network: -15 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'creative_studio',
     careerIds: ['designer'],
   },
   // Career-specific: teacher
@@ -1735,12 +2185,13 @@ const stage3Generic: SwipeCard[] = [
       label: { zh: '接受现实', en: 'Accept reality' },
       effects: { skill: 15, safety: -10, network: 10 },
       outcomes: [
-        { id: 's3_virtual_teacher_right_good', text: { zh: '主动学习 AI 教学工具，成为人机协作教学专家！', en: 'Proactively learned AI teaching tools. Became a human-AI teaching expert!' }, effects: { skill: 25, network: 15 }, weight: 30, careerWeightModifiers: { teacher: 1.5 } },
+        { id: 's3_virtual_teacher_right_good', text: { zh: '主动学习 AI 教学工具，成为人机协作教学专家！', en: 'Proactively learned AI teaching tools. Became a human-AI teaching expert!' }, effects: { skill: 18, network: 15 }, weight: 30, careerWeightModifiers: { teacher: 1.5 } },
         { id: 's3_virtual_teacher_right_mid', text: { zh: '接受了现实，但心态上还是有些失落。', en: 'Accepted reality, but feeling a bit down.' }, effects: { skill: 15, safety: -10 }, weight: 40 },
         { id: 's3_virtual_teacher_right_bad', text: { zh: '全盘接受后失去了教学热情，变成了机械执行者。', en: 'Lost your teaching passion after full acceptance. Became a mechanical executor.' }, effects: { skill: -15, safety: -20 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'school',
     careerIds: ['teacher'],
   },
   {
@@ -1758,14 +2209,15 @@ const stage3Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '接受', en: 'Accept' },
-      effects: { skill: 20, safety: -10 },
+      effects: { skill: 15, safety: -10 },
       outcomes: [
-        { id: 's3_curator_right_good', text: { zh: '学习体验设计做得风生水起，成为全校最受欢迎的课程架构师！', en: 'Thrived as a learning experience designer. Most popular curriculum architect!' }, effects: { skill: 25, network: 15 }, weight: 30, careerWeightModifiers: { teacher: 1.5 } },
-        { id: 's3_curator_right_mid', text: { zh: '新岗位还在适应中，学了很多但也挺累。', en: 'Adjusting to the new role. Learned a lot but it\'s exhausting.' }, effects: { skill: 20, safety: -10 }, weight: 40 },
+        { id: 's3_curator_right_good', text: { zh: '学习体验设计做得风生水起，成为全校最受欢迎的课程架构师！', en: 'Thrived as a learning experience designer. Most popular curriculum architect!' }, effects: { skill: 18, network: 15 }, weight: 30, careerWeightModifiers: { teacher: 1.5 } },
+        { id: 's3_curator_right_mid', text: { zh: '新岗位还在适应中，学了很多但也挺累。', en: 'Adjusting to the new role. Learned a lot but it\'s exhausting.' }, effects: { skill: 18, safety: -10 }, weight: 40 },
         { id: 's3_curator_right_bad', text: { zh: '转岗后发现自己不适合设计工作，进退两难。', en: 'Realized you\'re not suited for design work. Stuck between roles.' }, effects: { skill: -15, safety: -20 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'school',
     careerIds: ['teacher'],
   },
   // Career-specific: doctor
@@ -1784,14 +2236,15 @@ const stage3Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '学习操控', en: 'Learn to operate' },
-      effects: { skill: 25, safety: -10, finance: -10 },
+      effects: { skill: 15, safety: -10, finance: -10 },
       outcomes: [
-        { id: 's3_surgery_right_good', text: { zh: '成为医院首位机器人手术认证专家，手术排期排到半年后！', en: 'Became the hospital\'s first certified robotic surgeon. Booked for 6 months!' }, effects: { skill: 25, finance: 20 }, weight: 30, careerWeightModifiers: { doctor: 1.5 } },
-        { id: 's3_surgery_right_mid', text: { zh: '学会了基本操控，但还需要大量实践。', en: 'Learned the basics, but need lots more practice.' }, effects: { skill: 20, safety: -10, finance: -10 }, weight: 40 },
+        { id: 's3_surgery_right_good', text: { zh: '成为医院首位机器人手术认证专家，手术排期排到半年后！', en: 'Became the hospital\'s first certified robotic surgeon. Booked for 6 months!' }, effects: { skill: 18, finance: 20 }, weight: 30, careerWeightModifiers: { doctor: 1.5 } },
+        { id: 's3_surgery_right_mid', text: { zh: '学会了基本操控，但还需要大量实践。', en: 'Learned the basics, but need lots more practice.' }, effects: { skill: 18, safety: -10, finance: -10 }, weight: 40 },
         { id: 's3_surgery_right_bad', text: { zh: '学习期间出了操作失误，被暂停手术资格。', en: 'Made an error during training. Surgical privileges suspended.' }, effects: { safety: -25, skill: -15, finance: -15 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'hospital',
     careerIds: ['doctor'],
   },
   {
@@ -1809,14 +2262,15 @@ const stage3Generic: SwipeCard[] = [
     },
     rightChoice: {
       label: { zh: '研究', en: 'Research' },
-      effects: { skill: 20, finance: -15, safety: -10 },
+      effects: { skill: 15, finance: -15, safety: -10 },
       outcomes: [
-        { id: 's3_hospital_right_good', text: { zh: '研究方向押对了，发了顶刊论文，获得大额科研经费！', en: 'Research bet paid off. Published in top journals. Got major funding!' }, effects: { skill: 25, finance: 20 }, weight: 30, careerWeightModifiers: { doctor: 1.5 } },
-        { id: 's3_hospital_right_mid', text: { zh: '研究进展缓慢，但学到了不少前沿知识。', en: 'Research is slow, but learned cutting-edge knowledge.' }, effects: { skill: 20, finance: -15 }, weight: 40 },
+        { id: 's3_hospital_right_good', text: { zh: '研究方向押对了，发了顶刊论文，获得大额科研经费！', en: 'Research bet paid off. Published in top journals. Got major funding!' }, effects: { skill: 18, finance: 20 }, weight: 30, careerWeightModifiers: { doctor: 1.5 } },
+        { id: 's3_hospital_right_mid', text: { zh: '研究进展缓慢，但学到了不少前沿知识。', en: 'Research is slow, but learned cutting-edge knowledge.' }, effects: { skill: 18, finance: -15 }, weight: 40 },
         { id: 's3_hospital_right_bad', text: { zh: '研究方向被证伪，几年心血白费，经费也断了。', en: 'Research direction disproven. Years of work wasted. Funding cut.' }, effects: { skill: -15, finance: -25, safety: -15 }, weight: 30 },
       ],
     },
     stage: 3,
+    scene: 'hospital',
     careerIds: ['doctor'],
   },
   // Career-specific: content_creator
@@ -1843,6 +2297,7 @@ const stage3Generic: SwipeCard[] = [
       ],
     },
     stage: 3,
+    scene: 'creative_studio',
     careerIds: ['content_creator'],
   },
   {
@@ -1868,6 +2323,7 @@ const stage3Generic: SwipeCard[] = [
       ],
     },
     stage: 3,
+    scene: 'creative_studio',
     careerIds: ['content_creator'],
   },
 ];

@@ -1,6 +1,6 @@
 import { createRng } from './random';
 import { allCards } from '../data/cards';
-import type { SwipeCard } from './types';
+import type { SwipeCard, Scene } from './types';
 
 function shuffle<T>(arr: T[], rng: () => number): T[] {
   const result = [...arr];
@@ -11,14 +11,16 @@ function shuffle<T>(arr: T[], rng: () => number): T[] {
   return result;
 }
 
-export function buildDeck(careerId: string, seed: number): SwipeCard[] {
+export function buildDeck(careerId: string, scenes: Scene[], seed: number): SwipeCard[] {
   const rng = createRng(seed);
 
   const deck: SwipeCard[] = [];
 
   for (const stage of [1, 2, 3] as const) {
     const pool = allCards.filter(c =>
-      c.stage === stage && (!c.careerIds || c.careerIds.includes(careerId))
+      c.stage === stage &&
+      scenes.includes(c.scene) &&
+      (!c.careerIds || c.careerIds.includes(careerId))
     );
     const shuffled = shuffle(pool, rng);
     deck.push(...shuffled.slice(0, 10));

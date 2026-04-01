@@ -22,6 +22,8 @@ export interface CareerTalent {
   outcomeWeightModifiers: Record<string, number>;
 }
 
+export type Scene = 'universal' | 'office' | 'school' | 'hospital' | 'creative_studio';
+
 export type CharacterType = 'boss' | 'colleague' | 'senior' | 'ai' | 'headhunter' | 'hr';
 
 export interface Character {
@@ -45,6 +47,7 @@ export interface SwipeCard {
     outcomes?: SwipeOutcome[];
   };
   stage: 1 | 2 | 3;
+  scene: Scene;
   careerIds?: string[];
 }
 
@@ -54,6 +57,7 @@ export interface Career {
   description: { zh: string; en: string };
   startingAttributes: Attributes;
   icon: string;
+  scenes: Scene[];
   talents?: CareerTalent[];
 }
 

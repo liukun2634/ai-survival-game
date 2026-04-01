@@ -15,7 +15,7 @@ export function useSwipeGame() {
     const rng = createRng(gameSeed + 1);
     rngRef.current = rng;
     talentsRef.current = career.talents ?? [];
-    const deck = buildDeck(career.id, gameSeed);
+    const deck = buildDeck(career.id, career.scenes, gameSeed);
     setPendingOutcome(null);
     setState({
       careerId: career.id,

@@ -9,6 +9,7 @@ const makeCard = (overrides?: Partial<SwipeCard>): SwipeCard => ({
   leftChoice: { label: { zh: '拒绝', en: 'reject' }, effects: { safety: 5 } },
   rightChoice: { label: { zh: '接受', en: 'accept' }, effects: { safety: -10, skill: 15 } },
   stage: 1,
+  scene: 'universal',
   ...overrides,
 });
 
