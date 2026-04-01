@@ -36,10 +36,11 @@ export function ResultPage() {
   const attrs = lastResult.finalAttributes;
 
   const attrBars = [
-    { label: t(ui.safety), icon: '🛡', value: attrs.safety, color: '#4299e1' },
+    { label: t(ui.stability), icon: '🛡', value: attrs.stability, color: '#4299e1' },
     { label: t(ui.skill), icon: '⚡', value: attrs.skill, color: '#48bb78' },
     { label: t(ui.finance), icon: '💰', value: attrs.finance, color: '#d69e2e' },
     { label: t(ui.network), icon: '🤝', value: attrs.network, color: '#805ad5' },
+    { label: t(ui.sanity), icon: '🧠', value: attrs.sanity, color: '#e53e3e' },
   ];
 
   // Pick key story moments from history (ones with outcomeText)

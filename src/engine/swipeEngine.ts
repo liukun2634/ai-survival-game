@@ -1,7 +1,7 @@
 import type { Attributes, AttributeKey, GameState, SwipeCard, SwipeHistory, GameResult, SwipeOutcome, CareerTalent } from './types';
 import { endings } from '../data/endings';
 
-const ATTR_KEYS: AttributeKey[] = ['safety', 'skill', 'finance', 'network'];
+const ATTR_KEYS: AttributeKey[] = ['stability', 'skill', 'finance', 'network', 'sanity'];
 
 function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
@@ -106,10 +106,11 @@ export function checkGameOver(
 
 export function buildResult(state: GameState): GameResult {
   const score = Math.round(
-    state.attributes.safety * 1.5 +
-    state.attributes.skill * 1.2 +
+    state.attributes.stability * 1.5 +
+    state.attributes.skill * 0.8 +
     state.attributes.finance * 1.0 +
     state.attributes.network * 0.8 +
+    state.attributes.sanity * 1.3 +
     state.currentCard * 3
   );
 

@@ -15,10 +15,11 @@ export function CareerCard({ career, selected, onClick }: CareerCardProps) {
   const attrs = career.startingAttributes;
 
   const bars: Array<{ key: string; label: string; value: number; color: string }> = [
-    { key: 'safety', label: t(ui.safety), value: attrs.safety, color: '#4299e1' },
+    { key: 'stability', label: t(ui.stability), value: attrs.stability, color: '#4299e1' },
     { key: 'skill', label: t(ui.skill), value: attrs.skill, color: '#48bb78' },
     { key: 'finance', label: t(ui.finance), value: attrs.finance, color: '#d69e2e' },
     { key: 'network', label: t(ui.network), value: attrs.network, color: '#805ad5' },
+    { key: 'sanity', label: t(ui.sanity), value: attrs.sanity, color: '#e53e3e' },
   ];
 
   return (

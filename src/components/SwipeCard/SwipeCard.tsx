@@ -30,7 +30,7 @@ export function SwipeCard({ card, onSwipe }: SwipeCardProps) {
   };
 
   const effectIcons = (effects: Partial<Record<string, number>>) => {
-    const icons: Record<string, string> = { safety: '🛡', skill: '⚡', finance: '💰', network: '🤝' };
+    const icons: Record<string, string> = { stability: '🛡', skill: '⚡', finance: '💰', network: '🤝', sanity: '🧠' };
     return Object.entries(effects)
       .filter(([, v]) => v !== undefined && v !== 0)
       .map(([key, val]) => `${icons[key] ?? key}${val! > 0 ? '↑' : '↓'}`)

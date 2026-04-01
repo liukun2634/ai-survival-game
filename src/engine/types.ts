@@ -1,8 +1,9 @@
 export interface Attributes {
-  safety: number;
+  stability: number;
   skill: number;
   finance: number;
   network: number;
+  sanity: number;
 }
 
 export type AttributeKey = keyof Attributes;
@@ -22,7 +23,7 @@ export interface CareerTalent {
   outcomeWeightModifiers: Record<string, number>;
 }
 
-export type Scene = 'universal' | 'office' | 'school' | 'hospital' | 'creative_studio';
+export type Scene = 'universal' | 'office' | 'school';
 
 export type CharacterType = 'boss' | 'colleague' | 'senior' | 'ai' | 'headhunter' | 'hr';
 
@@ -49,6 +50,7 @@ export interface SwipeCard {
   stage: 1 | 2 | 3;
   scene: Scene;
   careerIds?: string[];
+  isEvent?: boolean;
 }
 
 export interface Career {

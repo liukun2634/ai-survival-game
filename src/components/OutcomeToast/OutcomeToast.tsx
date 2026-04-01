@@ -10,10 +10,11 @@ interface OutcomeToastProps {
 }
 
 const ATTR_META: Record<string, { icon: string; label: string }> = {
-  safety: { icon: '🛡', label: '安全' },
+  stability: { icon: '🛡', label: '稳定' },
   skill: { icon: '⚡', label: '技能' },
   finance: { icon: '💰', label: '财务' },
   network: { icon: '🤝', label: '人脉' },
+  sanity: { icon: '🧠', label: '心态' },
 };
 
 const SWIPE_DISMISS_THRESHOLD = 80;

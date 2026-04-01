@@ -22,8 +22,14 @@ export function buildDeck(careerId: string, scenes: Scene[], seed: number): Swip
       scenes.includes(c.scene) &&
       (!c.careerIds || c.careerIds.includes(careerId))
     );
-    const shuffled = shuffle(pool, rng);
-    deck.push(...shuffled.slice(0, 10));
+    const events = pool.filter(c => c.isEvent);
+    const regular = pool.filter(c => !c.isEvent);
+    const shuffledEvents = shuffle(events, rng);
+    const shuffledRegular = shuffle(regular, rng);
+    const eventCount = Math.min(shuffledEvents.length, rng() < 0.5 ? 1 : 2);
+    const pickedEvents = shuffledEvents.slice(0, eventCount);
+    const pickedRegular = shuffledRegular.slice(0, 10 - pickedEvents.length);
+    deck.push(...shuffle([...pickedEvents, ...pickedRegular], rng));
   }
 
   return deck;
