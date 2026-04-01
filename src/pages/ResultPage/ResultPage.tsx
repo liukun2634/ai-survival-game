@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { motion } from 'motion/react';
 import { useLanguage } from '../../i18n/LanguageContext';
@@ -6,6 +6,7 @@ import { useGameContext } from '../../hooks/GameContext';
 import { careers } from '../../data/careers';
 import { endings } from '../../data/endings';
 import { ui } from '../../i18n/translations';
+import { playEndingWon, playEndingLost } from '../../engine/soundManager';
 import styles from './ResultPage.module.css';
 
 export function ResultPage() {
@@ -13,6 +14,15 @@ export function ResultPage() {
   const { t } = useLanguage();
   const { lastResult } = useGameContext();
   const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!lastResult) return;
+    if (lastResult.gameOverReason === 'won') {
+      playEndingWon();
+    } else {
+      playEndingLost();
+    }
+  }, [lastResult]);
 
   if (!lastResult) {
     return (
