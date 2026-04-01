@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router';
 import { motion, AnimatePresence } from 'motion/react';
 import { SwipeCard } from '../../components/SwipeCard/SwipeCard';
@@ -8,6 +8,7 @@ import { useLanguage } from '../../i18n/LanguageContext';
 import { useGameContext } from '../../hooks/GameContext';
 import { useSwipeGame } from '../../hooks/useSwipeGame';
 import { ui } from '../../i18n/translations';
+import { isMuted, setMuted } from '../../engine/soundManager';
 import type { GameResult } from '../../engine/types';
 import styles from './GamePage.module.css';
 
@@ -17,6 +18,12 @@ export function GamePage() {
   const { selectedCareer, setLastResult } = useGameContext();
   const { state, currentCard, startGame, swipe, pendingOutcome, clearOutcome } = useSwipeGame();
   const pendingResultRef = useRef<GameResult | null>(null);
+  const [muted, setMutedState] = useState(isMuted);
+  const toggleMute = useCallback(() => {
+    const next = !muted;
+    setMuted(next);
+    setMutedState(next);
+  }, [muted]);
 
   useEffect(() => {
     if (!selectedCareer) {
@@ -55,6 +62,11 @@ export function GamePage() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.25 }}
     >
+      {/* Mute toggle */}
+      <button className={styles.muteBtn} onClick={toggleMute} aria-label={muted ? 'Unmute' : 'Mute'}>
+        {muted ? '🔇' : '🔊'}
+      </button>
+
       {/* Attribute bars */}
       <div className={styles.topBar}>
         <AttributePanel attributes={state.attributes} />
