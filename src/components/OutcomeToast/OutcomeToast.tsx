@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { motion, useMotionValue } from 'motion/react';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { ui } from '../../i18n/translations';
+import { playOutcomeGood, playOutcomeMid, playOutcomeBad } from '../../engine/soundManager';
 import type { SwipeOutcome } from '../../engine/types';
 import styles from './OutcomeToast.module.css';
 
@@ -22,6 +24,17 @@ const SWIPE_DISMISS_THRESHOLD = 80;
 export function OutcomeToast({ outcome, onDismiss }: OutcomeToastProps) {
   const { t } = useLanguage();
   const y = useMotionValue(0);
+
+  useEffect(() => {
+    const netEffect = Object.values(outcome.effects).reduce((sum, v) => sum + (v ?? 0), 0);
+    if (netEffect > 5) {
+      playOutcomeGood();
+    } else if (netEffect < -5) {
+      playOutcomeBad();
+    } else {
+      playOutcomeMid();
+    }
+  }, [outcome]);
 
   const effects = Object.entries(outcome.effects)
     .filter(([, v]) => v !== undefined && v !== 0)
