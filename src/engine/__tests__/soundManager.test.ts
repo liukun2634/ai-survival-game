@@ -6,8 +6,8 @@ beforeEach(() => {
 });
 
 describe('soundManager mute control', () => {
-  it('defaults to not muted', () => {
-    expect(isMuted()).toBe(false);
+  it('defaults to muted when no localStorage value', () => {
+    expect(isMuted()).toBe(true);
   });
 
   it('can be muted', () => {

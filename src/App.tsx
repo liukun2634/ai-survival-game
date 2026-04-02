@@ -3,6 +3,7 @@ import { AnimatePresence } from 'motion/react';
 import { LanguageProvider } from './i18n/LanguageContext';
 import { GameProvider } from './hooks/GameContext';
 import { LanguageToggle } from './components/LanguageToggle/LanguageToggle';
+import { SoundToggle } from './components/SoundToggle/SoundToggle';
 import { HomePage } from './pages/HomePage/HomePage';
 import { CareerSelectPage } from './pages/CareerSelectPage/CareerSelectPage';
 import { GamePage } from './pages/GamePage/GamePage';
@@ -27,7 +28,10 @@ export default function App() {
     <LanguageProvider>
       <GameProvider>
         <HashRouter>
-          <LanguageToggle />
+          <div style={{ position: 'fixed', top: 16, right: 16, zIndex: 100, display: 'flex', gap: 8 }}>
+            <SoundToggle />
+            <LanguageToggle />
+          </div>
           <AnimatedRoutes />
         </HashRouter>
       </GameProvider>

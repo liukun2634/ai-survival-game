@@ -10,7 +10,9 @@ function getCtx(): AudioContext {
 }
 
 export function isMuted(): boolean {
-  return localStorage.getItem(STORAGE_KEY) === 'true';
+  const val = localStorage.getItem(STORAGE_KEY);
+  if (val === null) return true; // default muted
+  return val === 'true';
 }
 
 export function setMuted(muted: boolean): void {

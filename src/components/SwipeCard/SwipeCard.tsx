@@ -1,8 +1,6 @@
-import { useEffect } from 'react';
 import { motion, useMotionValue, useTransform } from 'motion/react';
 import { characters } from '../../data/characters';
 import { useLanguage } from '../../i18n/LanguageContext';
-import { playCardAppear } from '../../engine/soundManager';
 import type { SwipeCard as SwipeCardType } from '../../engine/types';
 import styles from './SwipeCard.module.css';
 
@@ -19,10 +17,6 @@ export function SwipeCard({ card, onSwipe }: SwipeCardProps) {
   const rotate = useTransform(x, [-200, 0, 200], [-15, 0, 15]);
   const leftOpacity = useTransform(x, [-150, -50, 0], [1, 0.4, 0]);
   const rightOpacity = useTransform(x, [0, 50, 150], [0, 0.4, 1]);
-
-  useEffect(() => {
-    playCardAppear();
-  }, [card.id]);
 
   const character = characters.find(c => c.type === card.character);
 
